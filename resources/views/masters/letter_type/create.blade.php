@@ -9,7 +9,7 @@
     </div>
     <div class="col-12">
         <div class="d-grid">
-            <button type="submit" class="btn btn-primary">SIMPAN</button>
+            <button type="submit" class="btn btn-success">SIMPAN</button>
         </div>
     </div>
 </form>

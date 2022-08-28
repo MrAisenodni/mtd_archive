@@ -22,11 +22,6 @@
                     </ol>
                 </nav>
             </div>
-            <div class="ms-auto">
-                <div class="btn-group">
-                    <a href="{{ $menu->url }}/create"><button type="button" class="btn btn-primary">Tambah</button></a>
-                </div>
-            </div>
         </div>
         <!--end breadcrumb-->
         <h6 class="mb-0 text-uppercase">Daftar {{ $menu->title }}</h6>

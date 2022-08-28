@@ -49,7 +49,8 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">No</th>
-                                        <th>Nama</th>
+                                        <th>Kode</th>
+                                        <th>{{ $menu->title }}</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -58,6 +59,7 @@
                                         @foreach ($data as $item)
                                             <tr data-id="{{ $item->id }}">
                                                 <td class="text-center">{{ $loop->iteration }}</td>
+                                                <td>{{ $item->code }}</td>
                                                 <td>{{ $item->name }}</td>
                                                 <td class="text-center" style="width: 5%">
                                                     <a href="{{ $menu->url }}/{{ $item->id }}"><i class="bx bx-edit"></i></a>
@@ -80,9 +82,9 @@
                 <div class="card">
                     <div class="card-body">
                         @if (request()->path() == substr($menu->url, 1))
-                            @include('masters.letter_type.create')
+                            @include('masters.department_group.create')
                         @else
-                            @include('masters.letter_type.edit')
+                            @include('masters.department_group.edit')
                         @endif
                     </div>
                 </div>

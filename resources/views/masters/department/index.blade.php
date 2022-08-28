@@ -24,7 +24,7 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ $menu->url }}/create"><button type="button" class="btn btn-primary">Tambah</button></a>
+                    <a href="{{ $menu->url }}/create" class="btn btn-primary">Tambah</a>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             @endif 
-            <div class="col-8">
+            <div class="col-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
@@ -55,7 +55,10 @@
                                     <tr>
                                         <th style="width: 5%">No</th>
                                         <th>Kode</th>
-                                        <th>Nama</th>
+                                        <th>{{ $menu->title }}</th>
+                                        <th>Kelompok {{ $menu->title }}</th>
+                                        <th>RD</th>
+                                        <th>Manager</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -66,6 +69,9 @@
                                                 <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>{{ $item->code }}</td>
                                                 <td>{{ $item->name }}</td>
+                                                <td>@if ($item->department_group) {{ $item->department_group->name }} @endif</td>
+                                                <td>@if ($item->doc_ref == 1) Y @else N @endif</td>
+                                                <td>@if ($item->manager) {{ $item->manager->name }} @endif</td>
                                                 <td class="text-center" style="width: 5%">
                                                     <a href="{{ $menu->url }}/{{ $item->id }}"><i class="bx bx-edit"></i></a>
                                                     <form action="{{ $menu->url }}/{{ $item->id }}" method="POST" class="d-inline">
@@ -83,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col col-4">
+            {{-- <div class="col col-4">
                 <div class="card">
                     <div class="card-body">
                         @if (request()->path() == substr($menu->url, 1))
@@ -93,7 +99,7 @@
                         @endif
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </main>
 @endsection

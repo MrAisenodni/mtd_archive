@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             // For Master
             Masters\CompanySeeder::class,
             Masters\DepartmentSeeder::class,
+            Masters\DepartmentGroupSeeder::class,
             Masters\LetterStatusSeeder::class,
             Masters\LetterTypeSeeder::class,
             Masters\UserSeeder::class,

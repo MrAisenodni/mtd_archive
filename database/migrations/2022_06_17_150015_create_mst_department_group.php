@@ -4,13 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMstDepartment extends Migration
+class CreateMstDepartmentGroup extends Migration
 {
     public function up()
     {
-        Schema::create('mst_department', function (Blueprint $table) {
+        Schema::create('mst_department_group', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->nullable();
+            $table->string('code', 5)->nullable();
             $table->string('name');
             
             // Struktur Baku
@@ -24,6 +24,6 @@ class CreateMstDepartment extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('mst_department');
+        Schema::dropIfExists('mst_department_group');
     }
 }

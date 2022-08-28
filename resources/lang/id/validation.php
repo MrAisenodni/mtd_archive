@@ -160,6 +160,8 @@ return [
 
     'attributes' => [
         'code'                  => 'Kode',
+        'group'                 => 'Kelompok',
+        'manager'               => 'Manajer',
         'name'                  => 'Nama',
         'password'              => 'Kata Sandi',
         'username'              => 'Nama Pengguna',

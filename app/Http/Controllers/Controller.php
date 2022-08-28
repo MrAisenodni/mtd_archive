@@ -10,8 +10,10 @@ use App\Models\Settings\{
 use App\Models\Masters\{
     Company,
     Department,
+    DepartmentGroup,
     LetterStatus,
     LetterType,
+    User,
 }; 
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -33,7 +35,9 @@ class Controller extends BaseController
         // Global Variabel untuk Master
         $this->company = new Company();
         $this->department = new Department();
+        $this->department_group = new DepartmentGroup();
         $this->letter_status = new LetterStatus();
         $this->letter_type = new LetterType();
+        $this->user = new User();
     }
 }

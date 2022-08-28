@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Masters\{
     CompanyController,
     DepartmentController,
+    DepartmentGroupController,
     LetterTypeController,
     LetterStatusController,
 };
@@ -30,7 +31,8 @@ Route::middleware('authcheck')->group(function() {
     
     // Route untuk Master
     Route::resource('/master/perusahaan', CompanyController::class);
-    Route::resource('/master/bagian', DepartmentController::class);
+    Route::resource('/master/departemen', DepartmentController::class);
+    Route::resource('/master/kelompok-departemen', DepartmentGroupController::class);
     Route::resource('/master/status-surat', LetterStatusController::class);
     Route::resource('/master/jenis-surat', LetterTypeController::class);
 });

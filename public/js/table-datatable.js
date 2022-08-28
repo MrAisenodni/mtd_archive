@@ -13,7 +13,6 @@ $(function() {
                 
                 $('tbody>tr').hover(function() {
                     var id = $(this).attr('data-id')
-                    console.log(id, path, curpath)
 
                     $('a', this).addClass('text-white').removeClass('text-primary')
                     $('form>button', this).addClass('text-white').removeClass('text-danger')
@@ -26,7 +25,7 @@ $(function() {
                     }
                 }, function() {
                     var id = $(this).attr('data-id')
-                    console.log(id)
+                    
                     $('a', this).addClass('text-primary').removeClass('text-white')
                     $('form>button', this).addClass('text-danger').removeClass('text-white')
                     $(this).removeClass('bg-primary text-white')
