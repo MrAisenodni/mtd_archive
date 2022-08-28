@@ -3,7 +3,9 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Masters\{
     CompanyController,
+    DepartmentController,
     LetterTypeController,
+    LetterStatusController,
 };
 use Illuminate\Support\Facades\Route;
 
@@ -28,5 +30,7 @@ Route::middleware('authcheck')->group(function() {
     
     // Route untuk Master
     Route::resource('/master/perusahaan', CompanyController::class);
+    Route::resource('/master/bagian', DepartmentController::class);
+    Route::resource('/master/status-surat', LetterStatusController::class);
     Route::resource('/master/jenis-surat', LetterTypeController::class);
 });

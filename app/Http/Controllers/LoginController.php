@@ -15,8 +15,6 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
-
         $validate = $request->validate([
             'username'              => 'required',
             'password'              => 'required',

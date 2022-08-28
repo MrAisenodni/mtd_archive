@@ -5,18 +5,18 @@ namespace App\Http\Controllers\Masters;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LetterTypeController extends Controller
+class LetterStatusController extends Controller
 {
-    protected $path = '/master/jenis-surat';
+    protected $path = '/master/status-surat';
 
     public function index()
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'data'          => $this->letter_type->select('id', 'name')->where('disabled', 0)->get(),
+            'data'          => $this->letter_status->select('id', 'name')->where('disabled', 0)->get(),
         ];
 
-        return view('masters.letter_type.index', $data);
+        return view('masters.letter_status.index', $data);
     }
 
     public function store(Request $request)
@@ -29,7 +29,7 @@ class LetterTypeController extends Controller
             'created_by'    => session()->get('user_id'),
         ];
 
-        $this->letter_type->insert($data);
+        $this->letter_status->insert($data);
 
         return redirect(url()->previous())->with('status', 'Data Berhasil Ditambahkan.');
     }
@@ -38,11 +38,11 @@ class LetterTypeController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'detail'        => $this->letter_type->select('id', 'name')->where('id', $id)->where('disabled', 0)->first(),
-            'data'          => $this->letter_type->select('id', 'name')->where('disabled', 0)->get(),
+            'detail'        => $this->letter_status->select('id', 'name')->where('id', $id)->where('disabled', 0)->first(),
+            'data'          => $this->letter_status->select('id', 'name')->where('disabled', 0)->get(),
         ];
         
-        return view('masters.letter_type.index', $data);
+        return view('masters.letter_status.index', $data);
     }
 
     public function update(Request $request, $id)
@@ -55,7 +55,7 @@ class LetterTypeController extends Controller
             'updated_by'    => session()->get('user_id'),
         ];
 
-        $this->letter_type->where('id', $id)->update($data);
+        $this->letter_status->where('id', $id)->update($data);
 
         return redirect(url()->previous())->with('status', 'Data Berhasil Diubah.');
     }
@@ -68,7 +68,7 @@ class LetterTypeController extends Controller
             'updated_by'    => session()->get('user_id'),
         ];
 
-        $this->letter_type->where('id', $id)->update($data);
+        $this->letter_status->where('id', $id)->update($data);
 
         return redirect($this->path)->with('status', 'Data Berhasil Dihapus.');
     }

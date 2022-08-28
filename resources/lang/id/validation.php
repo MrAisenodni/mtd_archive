@@ -124,8 +124,8 @@ return [
     ],
     'starts_with' => 'The :attribute must start with one of the following: :values.',
     'string' => 'The :attribute must be a string.',
-    'timezone' => 'The :attribute must be a valid timezone.',
-    'unique' => 'The :attribute has already been taken.',
+    'timezone' => ':attribute harus berupa zona waktu yang valid.',
+    'unique' => ':attribute sudah digunakan.',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
@@ -159,8 +159,10 @@ return [
     */
 
     'attributes' => [
-        'username'      => 'Nama Pengguna',
-        'password'      => 'Kata Sandi',
+        'code'                  => 'Kode',
+        'name'                  => 'Nama',
+        'password'              => 'Kata Sandi',
+        'username'              => 'Nama Pengguna',
     ],
 
 ];

@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // For Master
             Masters\CompanySeeder::class,
+            Masters\DepartmentSeeder::class,
+            Masters\LetterStatusSeeder::class,
             Masters\LetterTypeSeeder::class,
             Masters\UserSeeder::class,
             
