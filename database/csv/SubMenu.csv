@@ -6,6 +6,7 @@ Sampah Surat;/manajemen/sampah-surat;bx bx-trash;2
 Perusahaan;/master/perusahaan;bi bi-arrow-right-short;3
 Jenis Surat;/master/jenis-surat;bi bi-arrow-right-short;3
 Status Surat;/master/status-surat;bi bi-arrow-right-short;3
+Lokasi Surat;/master/lokasi-surat;bi bi-arrow-right-short;3
 Departemen;/master/departemen;bi bi-arrow-right-short;3
 Kelompok Departemen;/master/kelompok-departemen;bi bi-arrow-right-short;3
 Asal Surat;/master/asal-surat;bi bi-arrow-right-short;3

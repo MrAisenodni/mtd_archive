@@ -8,12 +8,18 @@ use App\Models\Settings\{
     SubMenu,
 };
 use App\Models\Masters\{
+    City,
+    Country,
     Company,
+    District,
     Department,
     DepartmentGroup,
+    LetterLocation,
     LetterStatus,
     LetterType,
+    Province,
     User,
+    Ward,
 }; 
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -33,11 +39,17 @@ class Controller extends BaseController
         $this->submenu = new SubMenu();
 
         // Global Variabel untuk Master
+        $this->city = new City();
+        $this->country = new Country();
         $this->company = new Company();
         $this->department = new Department();
         $this->department_group = new DepartmentGroup();
+        $this->district = new District();
+        $this->letter_location = new LetterLocation();
         $this->letter_status = new LetterStatus();
         $this->letter_type = new LetterType();
+        $this->province = new Province();
         $this->user = new User();
+        $this->ward = new Ward();
     }
 }

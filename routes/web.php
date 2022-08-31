@@ -2,11 +2,17 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Masters\{
+    CityController,
     CompanyController,
+    CountryController,
     DepartmentController,
     DepartmentGroupController,
-    LetterTypeController,
+    DistrictController,
+    LetterLocationController,
     LetterStatusController,
+    LetterTypeController,
+    ProvinceController,
+    WardController,
 };
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +36,15 @@ Route::middleware('authcheck')->group(function() {
     });
     
     // Route untuk Master
+    Route::resource('/master/kota', CityController::class);
     Route::resource('/master/perusahaan', CompanyController::class);
+    Route::resource('/master/negara', CountryController::class);
     Route::resource('/master/departemen', DepartmentController::class);
+    Route::resource('/master/kecamatan', DistrictController::class);
     Route::resource('/master/kelompok-departemen', DepartmentGroupController::class);
+    Route::resource('/master/lokasi-surat', LetterLocationController::class);
     Route::resource('/master/status-surat', LetterStatusController::class);
     Route::resource('/master/jenis-surat', LetterTypeController::class);
+    Route::resource('/master/provinsi', ProvinceController::class);
+    Route::resource('/master/kelurahan', WardController::class);
 });

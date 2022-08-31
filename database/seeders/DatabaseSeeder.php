@@ -15,9 +15,15 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             // For Master
+            Masters\CountrySeeder::class,
+            Masters\ProvinceSeeder::class,
+            Masters\CitySeeder::class,
+            Masters\DistrictSeeder::class,
+            Masters\WardSeeder::class,
             Masters\CompanySeeder::class,
             Masters\DepartmentSeeder::class,
             Masters\DepartmentGroupSeeder::class,
+            Masters\LetterLocationSeeder::class,
             Masters\LetterStatusSeeder::class,
             Masters\LetterTypeSeeder::class,
             Masters\UserSeeder::class,

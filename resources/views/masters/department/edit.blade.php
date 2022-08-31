@@ -7,7 +7,6 @@
     <link href="{{ asset('/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet" />
 @endsection
 
-
 @section('content')
     <main class="page-content">
         <input type="hidden" value="{{ $menu->url }}" id="url">
