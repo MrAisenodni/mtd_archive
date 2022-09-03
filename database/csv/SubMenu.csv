@@ -7,12 +7,12 @@ Perusahaan;/master/perusahaan;bi bi-arrow-right-short;3
 Jenis Surat;/master/jenis-surat;bi bi-arrow-right-short;3
 Status Surat;/master/status-surat;bi bi-arrow-right-short;3
 Lokasi Surat;/master/lokasi-surat;bi bi-arrow-right-short;3
+Metode Penyimpanan;/master/metode-simpan;bi bi-arrow-right-short;3
+Retensi;/master/retensi;bi bi-arrow-right-short;3
+Jabatan;/master/jabatan;bi bi-arrow-right-short;3
 Departemen;/master/departemen;bi bi-arrow-right-short;3
 Kelompok Departemen;/master/kelompok-departemen;bi bi-arrow-right-short;3
 Asal Surat;/master/asal-surat;bi bi-arrow-right-short;3
-Kategori Dokumen;/master/kategori-dokumen;bi bi-arrow-right-short;3
-Klasifikasi Surat;/master/klasifikasi-surat;bi bi-arrow-right-short;3
-Hari Libur;/master/hari-libur;bi bi-arrow-right-short;3
 Kelurahan/Desa;/master/kelurahan;bi bi-arrow-right-short;3
 Kecamatan;/master/kecamatan;bi bi-arrow-right-short;3
 Kota;/master/kota;bi bi-arrow-right-short;3

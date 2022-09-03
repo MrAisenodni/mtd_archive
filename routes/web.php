@@ -11,7 +11,10 @@ use App\Http\Controllers\Masters\{
     LetterLocationController,
     LetterStatusController,
     LetterTypeController,
+    PositionController,
     ProvinceController,
+    RetentionController,
+    SaveMethodController,
     WardController,
 };
 use Illuminate\Support\Facades\Route;
@@ -45,6 +48,9 @@ Route::middleware('authcheck')->group(function() {
     Route::resource('/master/lokasi-surat', LetterLocationController::class);
     Route::resource('/master/status-surat', LetterStatusController::class);
     Route::resource('/master/jenis-surat', LetterTypeController::class);
+    Route::resource('/master/jabatan', PositionController::class);
     Route::resource('/master/provinsi', ProvinceController::class);
+    Route::resource('/master/retensi', RetentionController::class);
+    Route::resource('/master/metode-simpan', SaveMethodController::class);
     Route::resource('/master/kelurahan', WardController::class);
 });

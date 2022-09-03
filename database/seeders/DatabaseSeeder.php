@@ -19,13 +19,16 @@ class DatabaseSeeder extends Seeder
             Masters\ProvinceSeeder::class,
             Masters\CitySeeder::class,
             Masters\DistrictSeeder::class,
-            Masters\WardSeeder::class,
+            Masters\WardSeeder::class, // Komentar sementara untuk mempercepat Migrasi
             Masters\CompanySeeder::class,
             Masters\DepartmentSeeder::class,
             Masters\DepartmentGroupSeeder::class,
             Masters\LetterLocationSeeder::class,
             Masters\LetterStatusSeeder::class,
             Masters\LetterTypeSeeder::class,
+            Masters\PositionSeeder::class,
+            Masters\RetentionSeeder::class,
+            Masters\SaveMethodSeeder::class,
             Masters\UserSeeder::class,
             
             // For Setting

@@ -17,7 +17,10 @@ use App\Models\Masters\{
     LetterLocation,
     LetterStatus,
     LetterType,
+    Position,
     Province,
+    Retention,
+    SaveMethod,
     User,
     Ward,
 }; 
@@ -48,7 +51,10 @@ class Controller extends BaseController
         $this->letter_location = new LetterLocation();
         $this->letter_status = new LetterStatus();
         $this->letter_type = new LetterType();
+        $this->position = new Position();
         $this->province = new Province();
+        $this->retention = new Retention();
+        $this->save_method = new SaveMethod();
         $this->user = new User();
         $this->ward = new Ward();
     }
