@@ -3,6 +3,7 @@
 @section('title', $menu->title)
 
 @section('styles')
+    {{-- Data Table --}}
     <link href="{{ asset('/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/plugins/sweet-alert/sweetalert2.min.css') }}" rel="stylesheet" />
 @endsection
@@ -21,11 +22,6 @@
                         <li class="breadcrumb-item active" aria-current="page">{{ $menu->title }}</li>
                     </ol>
                 </nav>
-            </div>
-            <div class="ms-auto">
-                <div class="btn-group">
-                    <a href="{{ $menu->url }}/create" class="btn btn-primary">Tambah</a>
-                </div>
             </div>
         </div>
         <!--end breadcrumb-->
@@ -46,7 +42,7 @@
                     </div>
                 </div>
             @endif 
-            <div class="col-12">
+            <div class="col-8">
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
@@ -54,22 +50,16 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">No</th>
-                                        <th>Kode</th>
                                         <th>{{ $menu->title }}</th>
-                                        <th>Alamat</th>
-                                        <th>No HP/No Telp/No Fax</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
-                                {{-- <tbody>
+                                <tbody>
                                     @if ($data)
                                         @foreach ($data as $item)
                                             <tr data-id="{{ $item->id }}">
                                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                                <td>{{ $item->code }}</td>
                                                 <td>{{ $item->name }}</td>
-                                                <td>{{ $item->address_1 }}</td>
-                                                <td>{{ $item->phone_no }}/@if($item->home_no) {{ $item->home_no }} @else - @endif/@if($item->fax_no) {{ $item->fax_no }} @else - @endif</td>
                                                 <td class="text-center" style="width: 5%">
                                                     <a href="{{ $menu->url }}/{{ $item->id }}"><i class="bx bx-edit"></i></a>
                                                     <form action="{{ $menu->url }}/{{ $item->id }}" method="POST" class="d-inline">
@@ -81,48 +71,28 @@
                                             </tr>
                                         @endforeach
                                     @endif
-                                </tbody> --}}
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-            {{-- <div class="col col-4">
+            <div class="col col-4">
                 <div class="card">
                     <div class="card-body">
                         @if (request()->path() == substr($menu->url, 1))
-                            @include('masters.department.create')
+                            @include('masters.storage_time.create')
                         @else
-                            @include('masters.department.edit')
+                            @include('masters.storage_time.edit')
                         @endif
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </main>
 @endsection
 
 @section('scripts')
-    <script type="text/javascript">
-        $(document).ready(function(){
-
-        // DataTable
-        $('#empTable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('company.getCompany') }}",
-            columns: [
-                { data: 'id' },
-                { data: 'code' },
-                { data: 'name' },
-                { data: 'address_1' },
-                { data: 'phone_no' },
-            ]
-        });
-
-        });
-    </script>
-
     {{-- Data Table --}}
     <script src="{{ asset('/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>

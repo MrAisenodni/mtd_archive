@@ -21,6 +21,7 @@ use App\Models\Masters\{
     Province,
     Retention,
     SaveMethod,
+    StorageTime,
     User,
     Ward,
 }; 
@@ -55,6 +56,7 @@ class Controller extends BaseController
         $this->province = new Province();
         $this->retention = new Retention();
         $this->save_method = new SaveMethod();
+        $this->storage_time = new StorageTime();
         $this->user = new User();
         $this->ward = new Ward();
     }

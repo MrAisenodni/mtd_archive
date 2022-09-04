@@ -3,7 +3,6 @@ Surat Terkirim;/manajemen/surat-terkirim;bx bx-send;2
 Surat Keluar;/manajemen/surat-keluar;bx bx-mail-send;2
 Arsip Surat;/manajemen/arsip-surat;bx bx-archive;2
 Sampah Surat;/manajemen/sampah-surat;bx bx-trash;2
-Perusahaan;/master/perusahaan;bi bi-arrow-right-short;3
 Jenis Surat;/master/jenis-surat;bi bi-arrow-right-short;3
 Status Surat;/master/status-surat;bi bi-arrow-right-short;3
 Lokasi Surat;/master/lokasi-surat;bi bi-arrow-right-short;3
@@ -12,6 +11,7 @@ Retensi;/master/retensi;bi bi-arrow-right-short;3
 Jabatan;/master/jabatan;bi bi-arrow-right-short;3
 Departemen;/master/departemen;bi bi-arrow-right-short;3
 Kelompok Departemen;/master/kelompok-departemen;bi bi-arrow-right-short;3
+Perusahaan;/master/perusahaan;bi bi-arrow-right-short;3
 Asal Surat;/master/asal-surat;bi bi-arrow-right-short;3
 Kelurahan/Desa;/master/kelurahan;bi bi-arrow-right-short;3
 Kecamatan;/master/kecamatan;bi bi-arrow-right-short;3

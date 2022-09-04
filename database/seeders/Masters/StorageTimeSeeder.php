@@ -6,16 +6,16 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use JeroenZwart\CsvSeeder\CsvSeeder;
 
-class CompanySeeder extends CsvSeeder
+class StorageTimeSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->file = '/database/csv/Company.csv';
-        $this->tablename = 'mst_company';
+        $this->file = '/database/csv/StorageTime.csv';
+        $this->tablename = 'mst_storage_time';
         $this->defaults = [
             'created_by'    => 'Migrasi'
         ];
-        $this->mapping = ['code', 'name', 'address_1', 'phone_no', 'fax_no'];
+        $this->mapping = ['id', 'name'];
         $this->header = false;
     }
 

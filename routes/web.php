@@ -15,6 +15,7 @@ use App\Http\Controllers\Masters\{
     ProvinceController,
     RetentionController,
     SaveMethodController,
+    StorageTimeController,
     WardController,
 };
 use Illuminate\Support\Facades\Route;
@@ -52,5 +53,9 @@ Route::middleware('authcheck')->group(function() {
     Route::resource('/master/provinsi', ProvinceController::class);
     Route::resource('/master/retensi', RetentionController::class);
     Route::resource('/master/metode-simpan', SaveMethodController::class);
+    Route::resource('/master/lokasi-simpan', StorageTimeController::class);
     Route::resource('/master/kelurahan', WardController::class);
+
+    // Route untuk AJAX
+    Route::get('/master/get-perusahaan/', [CompanyController::class, 'get_company'])->name('company.getCompany');
 });
