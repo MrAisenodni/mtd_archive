@@ -5,7 +5,8 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="{{ asset('/images/favicon-32x32.png') }}" type="image/png" />
+        {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+        <link rel="icon" href="{{ asset($provider->provider_logo) }}" type="image/png" />
 
         <!--plugins-->
         <link href="{{ asset('/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
@@ -30,7 +31,7 @@
         <link href="{{ asset('/css/semi-dark.css') }}" rel="stylesheet" />
         <link href="{{ asset('/css/header-colors.css') }}" rel="stylesheet" />
 
-        <title>@yield('title') | MTD Arsip</title>
+        <title>@yield('title') | {{ $provider->provider_name }}</title>
     </head>
 
     <body>

@@ -29,7 +29,7 @@
             </div>
         </div>
         <!--end breadcrumb-->
-        <h6 class="mb-0 text-uppercase">Daftar {{ $menu->title }}</h6>
+        <h6 class="mb-0 text-uppercase">Ubah {{ $menu->title }}</h6>
         <hr/>
         <div class="row">
             @if (session('status'))

@@ -2,7 +2,7 @@
 
 $(function() {
 	"use strict";
-
+	
   // Tooltops
 
     $(function () {

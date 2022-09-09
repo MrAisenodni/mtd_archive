@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Masters\{
     CityController,
     CompanyController,
@@ -17,6 +16,10 @@ use App\Http\Controllers\Masters\{
     SaveMethodController,
     StorageTimeController,
     WardController,
+};
+use App\Http\Controllers\Settings\{
+    LoginController,
+    ProviderController,
 };
 use Illuminate\Support\Facades\Route;
 
@@ -55,6 +58,9 @@ Route::middleware('authcheck')->group(function() {
     Route::resource('/master/metode-simpan', SaveMethodController::class);
     Route::resource('/master/lokasi-simpan', StorageTimeController::class);
     Route::resource('/master/kelurahan', WardController::class);
+
+    // Route untuk Setting
+    Route::resource('/pengaturan/provider', ProviderController::class);
 
     // Route untuk AJAX
     Route::get('/master/get-perusahaan/', [CompanyController::class, 'get_company'])->name('company.getCompany');

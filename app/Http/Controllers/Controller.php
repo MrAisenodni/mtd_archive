@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Settings\{
     Login,
     Menu,
+    Provider,
     SubMenu,
 };
 use App\Models\Masters\{
@@ -40,6 +41,7 @@ class Controller extends BaseController
         // Global Variabel untuk Setting
         $this->login = new Login();
         $this->menu = new Menu();
+        $this->provider = new Provider();
         $this->submenu = new SubMenu();
 
         // Global Variabel untuk Master
