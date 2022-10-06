@@ -21,6 +21,9 @@ use App\Http\Controllers\Settings\{
     LoginController,
     ProviderController,
 };
+use App\Http\Controllers\Transactions\{
+    IncomingMailController,
+};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,6 +64,10 @@ Route::middleware('authcheck')->group(function() {
 
     // Route untuk Setting
     Route::resource('/pengaturan/provider', ProviderController::class);
+
+    // Route untuk Manajemen Surat
+    Route::resource('/manajemen/surat-masuk', IncomingMailController::class);
+    Route::resource('/manajemen/surat-keluar', OutgoingMailController::class);
 
     // Route untuk AJAX
     Route::get('/master/get-perusahaan/', [CompanyController::class, 'get_company'])->name('company.getCompany');

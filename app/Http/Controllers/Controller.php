@@ -2,12 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Settings\{
-    Login,
-    Menu,
-    Provider,
-    SubMenu,
-};
 use App\Models\Masters\{
     City,
     Country,
@@ -26,6 +20,15 @@ use App\Models\Masters\{
     User,
     Ward,
 }; 
+use App\Models\Settings\{
+    Login,
+    Menu,
+    Provider,
+    SubMenu,
+};
+use App\Models\Transactions\{
+    IncomingMail,
+};
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -61,5 +64,8 @@ class Controller extends BaseController
         $this->storage_time = new StorageTime();
         $this->user = new User();
         $this->ward = new Ward();
+
+        // Global Variabel untuk Transactions
+        $this->incoming_mail = new IncomingMail();
     }
 }

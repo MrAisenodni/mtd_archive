@@ -14,12 +14,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            // For Menu
+            Settings\MenuSeeder::class,
+            Settings\SubMenuSeeder::class,
+            Settings\ProviderSeeder::class,
+  
+            // For User Login
+            Masters\UserSeeder::class,
+            Settings\LoginSeeder::class,
+
             // For Master
-            Masters\CountrySeeder::class,
-            Masters\ProvinceSeeder::class,
-            Masters\CitySeeder::class,
-            Masters\DistrictSeeder::class,
-            Masters\WardSeeder::class, // Komentar sementara untuk mempercepat Migrasi
             Masters\CompanySeeder::class,
             Masters\DepartmentSeeder::class,
             Masters\DepartmentGroupSeeder::class,
@@ -29,13 +33,11 @@ class DatabaseSeeder extends Seeder
             Masters\PositionSeeder::class,
             Masters\RetentionSeeder::class,
             Masters\SaveMethodSeeder::class,
-            Masters\UserSeeder::class,
-            
-            // For Setting
-            Settings\ProviderSeeder::class,
-            Settings\LoginSeeder::class,
-            Settings\MenuSeeder::class,
-            Settings\SubMenuSeeder::class,
+            Masters\CountrySeeder::class,
+            Masters\ProvinceSeeder::class,
+            Masters\CitySeeder::class,
+            Masters\DistrictSeeder::class,
+            Masters\WardSeeder::class, // Komentar sementara untuk mempercepat Migrasi
         ]);
     }
 }
