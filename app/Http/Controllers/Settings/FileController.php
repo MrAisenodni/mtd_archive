@@ -10,6 +10,7 @@ class FileController extends Controller
     public function download(Request $request) 
     {
         // return response()->file(public_path().'/storage/'.$request->file);
-        return response()->download(public_path().'/storage/'.$request->file);
+        // return response()->download(public_path().'/storage/'.$request->file);
+        return response()->download(storage_path().'/app/public/'.$request->file);
     }
 }
