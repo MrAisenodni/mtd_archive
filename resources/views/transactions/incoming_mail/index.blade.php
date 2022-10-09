@@ -75,7 +75,7 @@
                                                 <td>{{ $item->letter_date }}</td>
                                                 <td>{{ $item->letter_place }}</td>
                                                 <td>
-                                                    <b>{{ $item->sender_name }}</b>
+                                                    <b>{{ $item->sender_name }}</b><br>
                                                     {{ $item->sender_position }} | {{ $item->sender_company }}
                                                 </td>
                                                 <td>
@@ -100,6 +100,7 @@
                                                         @csrf
                                                         <button type="submit" class="bx bx-trash text-danger sa-warning" style="border: 0px; background: 0%"></button>
                                                     </form>
+                                                    <a href="{{ $menu->url }}/{{ $item->id }}"><i class="bx bx-download"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

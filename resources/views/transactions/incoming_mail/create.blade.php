@@ -28,11 +28,11 @@
                     </ol>
                 </nav>
             </div>
-            <div class="ms-auto">
+            {{-- <div class="ms-auto">
                 <div class="btn-group">
                     <a href="{{ $menu->url }}/create" class="btn btn-primary">Tambah</a>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <!--end breadcrumb-->
         <h6 class="mb-0 text-uppercase">Tambah {{ $menu->title }}</h6>

@@ -18,6 +18,7 @@ use App\Http\Controllers\Masters\{
     WardController,
 };
 use App\Http\Controllers\Settings\{
+    FileController,
     LoginController,
     ProviderController,
 };
@@ -71,4 +72,7 @@ Route::middleware('authcheck')->group(function() {
 
     // Route untuk AJAX
     Route::get('/master/get-perusahaan/', [CompanyController::class, 'get_company'])->name('company.getCompany');
+
+    // Route untuk Download atau Upload
+    Route::get('/download', [FileController::class, 'download']);
 });
