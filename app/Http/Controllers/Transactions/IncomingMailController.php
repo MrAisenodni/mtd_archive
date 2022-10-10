@@ -14,7 +14,7 @@ class IncomingMailController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'data'          => $this->incoming_mail->select('id', 'letter_title', 'letter_no', 'letter_date', 'letter_place', 'sender_name', 'sender_position', 'letter_appendix', 'letter_status_id', 'letter_type_id')->where('disabled', 0)->get(),
+            'data'          => $this->incoming_mail->select('id', 'letter_title', 'letter_no', 'letter_date', 'letter_place', 'sender_name', 'sender_position', 'letter_appendix', 'letter_status_id', 'letter_type_id', 'letter_file')->where('disabled', 0)->get(),
         ];
 
         return view('transactions.incoming_mail.index', $data);
@@ -102,7 +102,7 @@ class IncomingMailController extends Controller
             return redirect($this->path)->with('status', 'Data Berhasil Dihapus.');
         } else {
             // $validate = $request->validate([
-            //     'code'              => 'required|unique:mst_incoming_mail,code,'.$id.',id,disabled,1',
+            //     'code'              => 'required|unique:mst_deleted_mail,code,'.$id.',id,disabled,1',
             //     'name'              => 'required',
             //     'group'             => 'required',
             // ]);
@@ -148,8 +148,15 @@ class IncomingMailController extends Controller
             'updated_at'    => now(),
             'updated_by'    => session()->get('user_id'),
         ];
-
         $this->incoming_mail->where('id', $id)->update($data);
+
+        $data = [
+            'deleted_id'    => $id,
+            'letter'        => 'surat_masuk',
+            'created_at'    => now(),
+            'created_by'    => session()->get('user_id'),
+        ];
+        $this->deleted_mail->insert($data);
 
         return redirect($this->path)->with('status', 'Data Berhasil Dihapus.');
     }

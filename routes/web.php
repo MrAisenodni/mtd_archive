@@ -23,6 +23,7 @@ use App\Http\Controllers\Settings\{
     ProviderController,
 };
 use App\Http\Controllers\Transactions\{
+    DeletedMailController,
     IncomingMailController,
 };
 use Illuminate\Support\Facades\Route;
@@ -69,6 +70,7 @@ Route::middleware('authcheck')->group(function() {
     // Route untuk Manajemen Surat
     Route::resource('/manajemen/surat-masuk', IncomingMailController::class);
     Route::resource('/manajemen/surat-keluar', OutgoingMailController::class);
+    Route::resource('/manajemen/sampah-surat', DeletedMailController::class);
 
     // Route untuk AJAX
     Route::get('/master/get-perusahaan/', [CompanyController::class, 'get_company'])->name('company.getCompany');

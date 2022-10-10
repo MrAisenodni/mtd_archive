@@ -27,6 +27,7 @@ use App\Models\Settings\{
     SubMenu,
 };
 use App\Models\Transactions\{
+    DeletedMail,
     IncomingMail,
 };
 
@@ -67,5 +68,6 @@ class Controller extends BaseController
 
         // Global Variabel untuk Transactions
         $this->incoming_mail = new IncomingMail();
+        $this->deleted_mail = new DeletedMail();
     }
 }

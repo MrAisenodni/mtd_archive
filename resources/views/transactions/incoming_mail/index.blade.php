@@ -98,9 +98,9 @@
                                                     <form action="{{ $menu->url }}/{{ $item->id }}" method="POST" class="d-inline">
                                                         @method('delete')
                                                         @csrf
-                                                        <button type="submit" class="bx bx-trash text-danger sa-warning" style="border: 0px; background: 0%"></button>
+                                                        <button id="delete" type="submit" class="bx bx-trash text-danger sa-warning" style="border: 0px; background: 0%"></button>
                                                     </form>
-                                                    <a href="{{ $menu->url }}/{{ $item->id }}"><i class="bx bx-download"></i></a>
+                                                    <a href="/download/?file={{ $item->letter_file }}"><i class="bx bx-download"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
