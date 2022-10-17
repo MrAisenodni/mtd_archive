@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrxIncomingMail extends Migration
+class CreateTrxMonitoringMail extends Migration
 {
     public function up()
     {
-        Schema::create('trx_incoming_mail', function (Blueprint $table) {
+        Schema::create('trx_monitoring_mail', function (Blueprint $table) {
             $table->id();
             $table->string('letter_title', 150);
             $table->string('letter_no', 60);
@@ -39,6 +39,6 @@ class CreateTrxIncomingMail extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('trx_incoming_mail');
+        Schema::dropIfExists('trx_monitoring_mail');
     }
 }

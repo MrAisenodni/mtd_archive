@@ -18,6 +18,7 @@ class CreateStgLogin extends Migration
             // $table->foreign('user_id')->references('id')->on('mst_user');
             
             // Struktur Baku
+            $table->string('access_code')->nullable();
             $table->boolean('disabled')->default(0);
             $table->string('created_by')->nullable();
             $table->dateTime('created_at')->default(now());

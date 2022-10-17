@@ -17,6 +17,7 @@ class CreateStgMenu extends Migration
             $table->unsignedInteger('main_menu_id')->nullable();
             
             // Struktur Baku
+            $table->string('access_code')->nullable();
             $table->boolean('disabled')->default(0);
             $table->string('created_by')->nullable();
             $table->dateTime('created_at')->default(now());

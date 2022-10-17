@@ -4,15 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMstDistrict extends Migration
+class CreateMstChest extends Migration
 {
     public function up()
     {
-        Schema::create('mst_district', function (Blueprint $table) {
+        Schema::create('mst_chest', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 10)->unique()->nullable();
             $table->string('name');
-            $table->unsignedInteger('city_id');
             
             // Struktur Baku
             $table->string('access_code')->nullable();
@@ -26,6 +24,6 @@ class CreateMstDistrict extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('mst_district');
+        Schema::dropIfExists('mst_chest');
     }
 }

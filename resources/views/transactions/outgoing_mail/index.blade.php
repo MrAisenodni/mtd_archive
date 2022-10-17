@@ -87,12 +87,7 @@
                                                 </td>
                                                 <td>
                                                     @if ($item->letter_status)
-                                                        <button type="button" class="btn" 
-                                                            style="padding-top: 0; height: 22px; 
-                                                                background: {{ $item->letter_status->back_color }}; 
-                                                                border: 0px; 
-                                                                color: {{ $item->letter_status->fore_color }}"
-                                                        >{{ $item->letter_status->name }}</button>
+                                                        {{ $item->letter_status->name }}
                                                     @else
                                                         -
                                                     @endif

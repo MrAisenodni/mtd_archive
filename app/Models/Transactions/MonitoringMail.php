@@ -11,11 +11,11 @@ use App\Models\Masters\{
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class IncomingMail extends Model
+class MonitoringMail extends Model
 {
     use HasFactory;
 
-    protected $table = 'trx_incoming_mail';
+    protected $table = 'trx_monitoring_mail';
 
     public function letter_status()
     {

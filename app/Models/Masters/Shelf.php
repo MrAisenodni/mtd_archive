@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Models\Masters;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Shelf extends Model
+{
+    use HasFactory;
+
+    protected $table = 'mst_shelf';
+
+    public function chest()
+    {
+        return $this->belongsTo(Chest::class)->select('id', 'name')->where('disabled', 0);
+    }
+}

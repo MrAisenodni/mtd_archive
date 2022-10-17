@@ -11,8 +11,11 @@ class CreateMstLetterStatus extends Migration
         Schema::create('mst_letter_status', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('back_color')->nullable();
+            $table->string('fore_color')->nullable();
             
             // Struktur Baku
+            $table->string('access_code')->nullable();
             $table->boolean('disabled')->default(0);
             $table->string('created_by')->nullable();
             $table->dateTime('created_at')->default(now());

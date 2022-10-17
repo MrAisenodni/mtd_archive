@@ -138,7 +138,7 @@
                             <div class="row mb-2">
                                 <div class="col-12">
                                     <label class="form-label" for="letter_address">Alamat Pengirim</label>
-                                    <textarea name="letter_address" id="letter_address" class="form-control" cols="30" rows="5">{!! old('letter_address') !!}</textarea>
+                                    <textarea name="letter_address" id="letter_address" class="form-control" cols="30" rows="10">{!! old('letter_address') !!}</textarea>
                                     @error('letter_address')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -154,7 +154,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-2">
+                            <div class="row">
                                 <div class="col-6">
                                     <label class="form-label" for="letter_type">Tipe Surat</label>
                                     <select class="single-select form-control @error('letter_type') is-invalid @enderror" id="letter_type" name="letter_type">
@@ -180,36 +180,6 @@
                                         @endif
                                     </select>
                                     @error('letter_status')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <label class="form-label" for="department">Departemen</label>
-                                    <select class="single-select form-control @error('department') is-invalid @enderror" id="department" name="department">
-                                        <option value="">--- SILAHKAN PILIH ---</option>
-                                        @if ($departments)
-                                            @foreach ($departments as $item)
-                                                <option value="{{ $item->id }}" @if(old('department') == $item->id) selected @endif>{{ $item->name }}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                    @error('department')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label" for="shelf">Lokasi Penyimpanan</label>
-                                    <select class="single-select form-control @error('shelf') is-invalid @enderror" id="shelf" name="shelf">
-                                        <option value="">--- SILAHKAN PILIH ---</option>
-                                        @if ($shelfs)
-                                            @foreach ($shelfs as $item)
-                                                <option value="{{ $item->id }}" @if(old('shelf') == $item->id) selected @endif>{{ $item->chest->name }} | {{ $item->name }}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                    @error('shelf')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

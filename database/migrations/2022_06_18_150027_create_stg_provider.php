@@ -39,6 +39,7 @@ class CreateStgProvider extends Migration
             $table->unsignedInteger('owner_ward_id')->nullable(); // Join ke Tabel mst_ward (Kelurahan)
             
             // Struktur Baku
+            $table->string('access_code')->nullable();
             $table->boolean('disabled')->default(0);
             $table->string('created_by')->nullable();
             $table->dateTime('created_at')->default(now());

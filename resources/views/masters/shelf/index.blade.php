@@ -3,8 +3,15 @@
 @section('title', $menu->title)
 
 @section('styles')
+    {{-- DataTable --}}
     <link href="{{ asset('/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+
+    {{-- Sweet Alert --}}
     <link href="{{ asset('/plugins/sweet-alert/sweetalert2.min.css') }}" rel="stylesheet" />
+
+    {{-- Select2 --}}
+    <link href="{{ asset('/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -21,11 +28,6 @@
                         <li class="breadcrumb-item active" aria-current="page">{{ $menu->title }}</li>
                     </ol>
                 </nav>
-            </div>
-            <div class="ms-auto">
-                <div class="btn-group">
-                    <a href="{{ $menu->url }}/create" class="btn btn-primary">Tambah</a>
-                </div>
             </div>
         </div>
         <!--end breadcrumb-->
@@ -46,7 +48,7 @@
                     </div>
                 </div>
             @endif 
-            <div class="col-12">
+            <div class="col-8">
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
@@ -54,14 +56,8 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">No</th>
-                                        <th>No Surat</th>
-                                        <th>Judul</th>
-                                        <th>Tanggal</th>
-                                        <th>Tempat</th>
-                                        <th>Pengirim</th>
-                                        <th>Tipe</th>
-                                        <th>Status</th>
-                                        <th>Lampiran</th>
+                                        <th>Lemari</th>
+                                        <th>{{ $menu->title }}</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -70,34 +66,8 @@
                                         @foreach ($data as $item)
                                             <tr data-id="{{ $item->id }}">
                                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                                <td>{{ $item->letter_no }}</td>
-                                                <td>{{ $item->letter_title }}</td>
-                                                <td>{{ $item->letter_date }}</td>
-                                                <td>{{ $item->letter_place }}</td>
-                                                <td>
-                                                    <b>{{ $item->sender_name }}</b><br>
-                                                    {{ $item->sender_position }} | {{ $item->sender_company }}
-                                                </td>
-                                                <td>
-                                                    @if ($item->letter_type)
-                                                        {{ $item->letter_type->name }}
-                                                    @else
-                                                        -
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($item->letter_status)
-                                                        <button type="button" class="btn" 
-                                                            style="padding-top: 0; height: 22px; 
-                                                                background: {{ $item->letter_status->back_color }}; 
-                                                                border: 0px; 
-                                                                color: {{ $item->letter_status->fore_color }}"
-                                                        >{{ $item->letter_status->name }}</button>
-                                                    @else
-                                                        -
-                                                    @endif
-                                                </td>
-                                                <td>-</td>
+                                                <td>{{ $item->chest->name }}</td>
+                                                <td>{{ $item->name }}</td>
                                                 <td class="text-center" style="width: 5%">
                                                     <a href="{{ $menu->url }}/{{ $item->id }}"><i class="bx bx-edit"></i></a>
                                                     <form action="{{ $menu->url }}/{{ $item->id }}" method="POST" class="d-inline">
@@ -105,7 +75,6 @@
                                                         @csrf
                                                         <button id="delete" type="submit" class="bx bx-trash text-danger sa-warning" style="border: 0px; background: 0%"></button>
                                                     </form>
-                                                    <a href="/download/?file={{ $item->letter_file }}"><i class="bx bx-download"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -116,17 +85,17 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col col-4">
+            <div class="col col-4">
                 <div class="card">
                     <div class="card-body">
                         @if (request()->path() == substr($menu->url, 1))
-                            @include('masters.department.create')
+                            @include('masters.shelf.create')
                         @else
-                            @include('masters.department.edit')
+                            @include('masters.shelf.edit')
                         @endif
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </main>
 @endsection
@@ -140,4 +109,8 @@
     {{-- Sweet Alert --}}
     <script src="{{ asset('/plugins/sweet-alert/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('/js/sweet-alert.init.js') }}"></script>
+
+    {{-- Select2 --}}
+    <script src="{{ asset('/plugins/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('/js/form-select2.js') }}"></script>
 @endsection

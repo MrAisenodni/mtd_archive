@@ -1,19 +1,20 @@
 <?php
 
 use App\Http\Controllers\Masters\{
+    ChestController,
     CityController,
     CompanyController,
     CountryController,
     DepartmentController,
     DepartmentGroupController,
     DistrictController,
-    LetterLocationController,
     LetterStatusController,
     LetterTypeController,
     PositionController,
     ProvinceController,
     RetentionController,
     SaveMethodController,
+    ShelfController,
     StorageTimeController,
     WardController,
 };
@@ -25,6 +26,8 @@ use App\Http\Controllers\Settings\{
 use App\Http\Controllers\Transactions\{
     DeletedMailController,
     IncomingMailController,
+    MonitoringMailController,
+    OutgoingMailController,
 };
 use Illuminate\Support\Facades\Route;
 
@@ -48,19 +51,20 @@ Route::middleware('authcheck')->group(function() {
     });
     
     // Route untuk Master
+    Route::resource('/master/lemari', ChestController::class);
     Route::resource('/master/kota', CityController::class);
     Route::resource('/master/perusahaan', CompanyController::class);
     Route::resource('/master/negara', CountryController::class);
     Route::resource('/master/departemen', DepartmentController::class);
     Route::resource('/master/kecamatan', DistrictController::class);
     Route::resource('/master/kelompok-departemen', DepartmentGroupController::class);
-    Route::resource('/master/lokasi-surat', LetterLocationController::class);
     Route::resource('/master/status-surat', LetterStatusController::class);
     Route::resource('/master/jenis-surat', LetterTypeController::class);
     Route::resource('/master/jabatan', PositionController::class);
     Route::resource('/master/provinsi', ProvinceController::class);
     Route::resource('/master/retensi', RetentionController::class);
     Route::resource('/master/metode-simpan', SaveMethodController::class);
+    Route::resource('/master/rak', ShelfController::class);
     Route::resource('/master/lokasi-simpan', StorageTimeController::class);
     Route::resource('/master/kelurahan', WardController::class);
 
@@ -70,6 +74,7 @@ Route::middleware('authcheck')->group(function() {
     // Route untuk Manajemen Surat
     Route::resource('/manajemen/surat-masuk', IncomingMailController::class);
     Route::resource('/manajemen/surat-keluar', OutgoingMailController::class);
+    Route::resource('/manajemen/monitoring-surat', MonitoringMailController::class);
     Route::resource('/manajemen/sampah-surat', DeletedMailController::class);
 
     // Route untuk AJAX

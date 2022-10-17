@@ -1,11 +1,13 @@
 Surat Masuk;/manajemen/surat-masuk;bx bx-download;2
-Surat Terkirim;/manajemen/surat-terkirim;bx bx-send;2
+Distribusi Surat;/manajemen/distribusi-surat;bx bx-send;2
 Surat Keluar;/manajemen/surat-keluar;bx bx-mail-send;2
+Monitoring Surat;/manajemen/monitoring-surat;bx bx-camera-home;2
 Arsip Surat;/manajemen/arsip-surat;bx bx-archive;2
 Sampah Surat;/manajemen/sampah-surat;bx bx-trash;2
 Jenis Surat;/master/jenis-surat;bi bi-arrow-right-short;3
-Status Surat;/master/status-surat;bi bi-arrow-right-short;3
-Lokasi Surat;/master/lokasi-surat;bi bi-arrow-right-short;3
+Status;/master/status-surat;bi bi-arrow-right-short;3
+Lemari;/master/lemari;bi bi-arrow-right-short;3
+Rak;/master/rak;bi bi-arrow-right-short;3
 Metode Penyimpanan;/master/metode-simpan;bi bi-arrow-right-short;3
 Retensi;/master/retensi;bi bi-arrow-right-short;3
 Jabatan;/master/jabatan;bi bi-arrow-right-short;3
@@ -19,6 +21,7 @@ Kota;/master/kota;bi bi-arrow-right-short;3
 Provinsi;/master/provinsi;bi bi-arrow-right-short;3
 Negara;/master/negara;bi bi-arrow-right-short;3
 Provider;/pengaturan/provider;bi bi-building;4
+Pengguna;/pengaturan/pengguna;bx bx-user;4
 Bahasa;/pengaturan/bahasa;lni lni-library;4
 FAQ;/pengaturan/faq;bi bi-exclamation-triangle;4
 Dokumentasi;/pengaturan/dokumentasi;bi bi-file-earmark-code;4

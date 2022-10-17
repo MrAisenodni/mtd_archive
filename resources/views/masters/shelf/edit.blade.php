@@ -1,24 +1,24 @@
 <form class="row g-3" action="{{ $menu->url }}/{{ $detail->id }}" method="POST">
     @method('PUT')
     @csrf
-    <div class="col-8">
+    <div class="col-12">
         <label class="form-label" for="name">Nama {{ $menu->title }}</label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $detail->name) }}">
         @error('name')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
-    <div class="col-2" style="padding-left: 0; padding-bottom: 0;">
-        <label class="form-label" for="back_color">BG</label>
-        <input type="color" class="form-control" id="back_color" name="back_color" value="{{ old('back_color', $detail->back_color) }}" style="padding: 0.1rem; margin: 0; height: 37px">
-        @error('back_color')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="col-2" style="padding-left: 0; padding-bottom: 0;">
-        <label class="form-label" for="fore_color">FG</label>
-        <input type="color" class="form-control" id="fore_color" name="fore_color" value="{{ old('fore_color', $detail->fore_color) }}" style="padding: 0.1rem; margin: 0; height: 37px">
-        @error('fore_color')
+    <div class="col-12">
+        <label class="form-label" for="chest">Kelompok {{ $menu->title }}</label>
+        <select class="single-select form-control @error('chest') is-invalid @enderror" id="chest" name="chest">
+            <option value="">--- SILAHKAN PILIH ---</option>
+            @if ($chests)
+                @foreach ($chests as $item)
+                    <option value="{{ $item->id }}" @if(old('chest', $detail->chest_id) == $item->id) selected @endif>{{ $item->name }}</option>
+                @endforeach
+            @endif
+        </select>
+        @error('chest')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>

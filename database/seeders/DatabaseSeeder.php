@@ -24,10 +24,11 @@ class DatabaseSeeder extends Seeder
             Settings\LoginSeeder::class,
 
             // For Master
+            Masters\ChestSeeder::class,
+            Masters\ShelfSeeder::class,
             Masters\CompanySeeder::class,
             Masters\DepartmentSeeder::class,
             Masters\DepartmentGroupSeeder::class,
-            Masters\LetterLocationSeeder::class,
             Masters\LetterStatusSeeder::class,
             Masters\LetterTypeSeeder::class,
             Masters\PositionSeeder::class,

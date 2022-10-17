@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrxIncomingMail extends Migration
+class CreateTrxOutgoingMail extends Migration
 {
     public function up()
     {
-        Schema::create('trx_incoming_mail', function (Blueprint $table) {
+        Schema::create('trx_outgoing_mail', function (Blueprint $table) {
             $table->id();
             $table->string('letter_title', 150);
             $table->string('letter_no', 60);
@@ -17,15 +17,13 @@ class CreateTrxIncomingMail extends Migration
             $table->date('letter_date');
             $table->string('letter_place', 100);
             $table->string('letter_address')->nullable();
-            $table->string('sender_name', 100)->nullable(); // Nama Pengirim
-            $table->string('sender_no', 50)->nullable(); // Nomor Pengirim
-            $table->string('sender_position', 100)->nullable(); // Jabatan Pengirim
-            $table->string('sender_company', 100)->nullable(); // Perusahaan Pengirim
+            $table->string('receiver_name', 100)->nullable(); // Nama Pengirim
+            $table->string('receiver_no', 50)->nullable(); // Nomor Pengirim
+            $table->string('receiver_position', 100)->nullable(); // Jabatan Pengirim
+            $table->string('receiver_company', 100)->nullable(); // Perusahaan Pengirim
             $table->unsignedInteger('letter_type_id')->nullable(); // Join ke Tabel mst_letter_type
             $table->unsignedInteger('letter_status_id')->nullable(); // Join ke Tabel mst_letter_status
-            $table->unsignedInteger('department_id')->nullable(); // Join ke Tabel mst_department
-            $table->unsignedInteger('shelf_id')->nullable(); // Join ke Tabel mst_shelf
-            $table->text('letter_file')->nullable(); // Lokasi penyimpanan Surat Masuk
+            $table->text('letter_file')->nullable(); // Lokasi penyimpanan Surat Keluar
 
             // Struktur Baku
             $table->string('access_code')->nullable();
@@ -39,6 +37,6 @@ class CreateTrxIncomingMail extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('trx_incoming_mail');
+        Schema::dropIfExists('trx_outgoing_mail');
     }
 }

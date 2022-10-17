@@ -13,7 +13,7 @@ class LetterStatusController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'data'          => $this->letter_status->select('id', 'name')->where('disabled', 0)->get(),
+            'data'          => $this->letter_status->select('id', 'name', 'back_color', 'fore_color')->where('disabled', 0)->get(),
         ];
 
         return view('masters.letter_status.index', $data);
@@ -25,6 +25,8 @@ class LetterStatusController extends Controller
 
         $data = [
             'name'          => $input['name'],
+            'back_color'    => $input['back_color'],
+            'fore_color'    => $input['fore_color'],
             'created_at'    => now(),
             'created_by'    => session()->get('user_id'),
         ];
@@ -38,8 +40,8 @@ class LetterStatusController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'detail'        => $this->letter_status->select('id', 'name')->where('id', $id)->where('disabled', 0)->first(),
-            'data'          => $this->letter_status->select('id', 'name')->where('disabled', 0)->get(),
+            'detail'        => $this->letter_status->select('id', 'name', 'back_color', 'fore_color')->where('id', $id)->where('disabled', 0)->first(),
+            'data'          => $this->letter_status->select('id', 'name', 'back_color', 'fore_color')->where('disabled', 0)->get(),
         ];
         
         return view('masters.letter_status.index', $data);
@@ -51,6 +53,8 @@ class LetterStatusController extends Controller
 
         $data = [
             'name'          => $input['name'],
+            'back_color'    => $input['back_color'],
+            'fore_color'    => $input['fore_color'],
             'updated_at'    => now(),
             'updated_by'    => session()->get('user_id'),
         ];

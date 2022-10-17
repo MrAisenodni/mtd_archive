@@ -50,6 +50,7 @@
                                     <tr>
                                         <th style="width: 5%">No</th>
                                         <th>Nama</th>
+                                        <th>Warna</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -59,6 +60,9 @@
                                             <tr data-id="{{ $item->id }}">
                                                 <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td>{{ $item->name }}</td>
+                                                <td>
+                                                    <button type="button" class="btn" style="padding-top: 0; height: 22px; background: {{ $item->back_color }}; border: 0px; color: {{ $item->fore_color }}">{{ $item->fore_color }}</button>
+                                                </td>
                                                 <td class="text-center" style="width: 5%">
                                                     <a href="{{ $menu->url }}/{{ $item->id }}"><i class="bx bx-edit"></i></a>
                                                     <form action="{{ $menu->url }}/{{ $item->id }}" method="POST" class="d-inline">

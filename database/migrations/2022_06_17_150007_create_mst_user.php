@@ -24,6 +24,7 @@ class CreateMstUser extends Migration
             $table->unsignedInteger('position_id')->nullable(); // Join ke Tabel mst_position
             
             // Struktur Baku
+            $table->string('access_code')->nullable();
             $table->boolean('disabled')->default(0);
             $table->string('created_by')->nullable();
             $table->dateTime('created_at')->default(now());
