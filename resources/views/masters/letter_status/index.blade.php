@@ -41,6 +41,20 @@
                     </div>
                 </div>
             @endif 
+            @if (session('error'))
+                <div class="col-12">
+                    <div class="alert border-0 bg-light-danger alert-dismissible fade show py-2">
+                        <div class="d-flex align-items-center">
+                            <div class="fs-3 text-danger"><i class="bi bi-check-circle-fill"></i>
+                            </div>
+                            <div class="ms-3">
+                                <div class="text-danger">{{ session('error') }}</div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            @endif 
             <div class="col-8">
                 <div class="card">
                     <div class="card-body">
@@ -59,7 +73,7 @@
                                         @foreach ($data as $item)
                                             <tr data-id="{{ $item->id }}">
                                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                                <td>{{ $item->name }}</td>
+                                                <td class="@if ($item->main_status == 1) text-success fw-bold @endif">{{ $item->name }}</td>
                                                 <td>
                                                     <button type="button" class="btn" style="padding-top: 0; height: 22px; background: {{ $item->back_color }}; border: 0px; color: {{ $item->fore_color }}">{{ $item->fore_color }}</button>
                                                 </td>

@@ -53,10 +53,12 @@
                 </div>
             @endif 
             <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <form action="{{ $menu->url }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ $menu->url }}" method="POST" enctype="multipart/form-data">
+                    <div class="card">
+                        <div class="card-body">
                             @csrf
+                            <h6 class="mb-0">Detail {{ $menu->title }}</h6>
+                            <hr>
                             <div class="row mb-2">
                                 <div class="col-3">
                                     <label class="form-label" for="letter_no">Nomor Surat</label>
@@ -104,6 +106,68 @@
                                 </div>
                             </div>
                             <div class="row mb-2">
+                                <div class="col-12">
+                                    <label class="form-label" for="letter_file">Lampiran Surat</label>
+                                    <span class="desc"></span>
+                                    <input type="file" class="form-control @error('letter_file') is-invalid @enderror" id="image" name="letter_file" value="{{ old('letter_file') }}">
+                                    @error('letter_file')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="form-label" for="letter_type">Tipe Surat</label>
+                                    <select class="single-select form-control @error('letter_type') is-invalid @enderror" id="letter_type" name="letter_type">
+                                        <option value="">--- SILAHKAN PILIH ---</option>
+                                        @if ($letter_types)
+                                            @foreach ($letter_types as $item)
+                                                <option value="{{ $item->id }}" @if(old('letter_type') == $item->id) selected @endif>{{ $item->name }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    @error('letter_type')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label" for="department">Departemen</label>
+                                    <select class="single-select form-control @error('department') is-invalid @enderror" id="department" name="department">
+                                        <option value="">--- SILAHKAN PILIH ---</option>
+                                        @if ($departments)
+                                            @foreach ($departments as $item)
+                                                <option value="{{ $item->id }}" @if(old('department') == $item->id) selected @endif>{{ $item->name }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    @error('department')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-4">
+                                    <label class="form-label" for="shelf">Lokasi Penyimpanan</label>
+                                    <select class="single-select form-control @error('shelf') is-invalid @enderror" id="shelf" name="shelf">
+                                        <option value="">--- SILAHKAN PILIH ---</option>
+                                        @if ($shelfs)
+                                            @foreach ($shelfs as $item)
+                                                <option value="{{ $item->id }}" @if(old('shelf') == $item->id) selected @endif>{{ $item->chest->name }} | {{ $item->name }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    @error('shelf')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Pembatas Detail Pengirim --}}
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-0">Detail Pengirim</h6>
+                            <hr>
+                            <div class="row mb-2">
                                 <div class="col-3">
                                     <label class="form-label" for="sender_no">Nomor Pengirim (KTP/NPWP)</label>
                                     <input type="text" class="form-control @error('sender_no') is-invalid @enderror" id="sender_no" name="sender_no" value="{{ old('sender_no') }}">
@@ -144,76 +208,6 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-2">
-                                <div class="col-12">
-                                    <label class="form-label" for="letter_file">Lampiran Surat</label>
-                                    <span class="desc"></span>
-                                    <input type="file" class="form-control @error('letter_file') is-invalid @enderror" id="image" name="letter_file" value="{{ old('letter_file') }}">
-                                    @error('letter_file')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-6">
-                                    <label class="form-label" for="letter_type">Tipe Surat</label>
-                                    <select class="single-select form-control @error('letter_type') is-invalid @enderror" id="letter_type" name="letter_type">
-                                        <option value="">--- SILAHKAN PILIH ---</option>
-                                        @if ($letter_types)
-                                            @foreach ($letter_types as $item)
-                                                <option value="{{ $item->id }}" @if(old('letter_type') == $item->id) selected @endif>{{ $item->name }}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                    @error('letter_type')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label" for="letter_status">Status Surat</label>
-                                    <select class="single-select form-control @error('letter_status') is-invalid @enderror" id="letter_status" name="letter_status">
-                                        <option value="">--- SILAHKAN PILIH ---</option>
-                                        @if ($letter_statuses)
-                                            @foreach ($letter_statuses as $item)
-                                                <option value="{{ $item->id }}" @if(old('letter_status') == $item->id) selected @endif>{{ $item->name }}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                    @error('letter_status')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <label class="form-label" for="department">Departemen</label>
-                                    <select class="single-select form-control @error('department') is-invalid @enderror" id="department" name="department">
-                                        <option value="">--- SILAHKAN PILIH ---</option>
-                                        @if ($departments)
-                                            @foreach ($departments as $item)
-                                                <option value="{{ $item->id }}" @if(old('department') == $item->id) selected @endif>{{ $item->name }}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                    @error('department')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label" for="shelf">Lokasi Penyimpanan</label>
-                                    <select class="single-select form-control @error('shelf') is-invalid @enderror" id="shelf" name="shelf">
-                                        <option value="">--- SILAHKAN PILIH ---</option>
-                                        @if ($shelfs)
-                                            @foreach ($shelfs as $item)
-                                                <option value="{{ $item->id }}" @if(old('shelf') == $item->id) selected @endif>{{ $item->chest->name }} | {{ $item->name }}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                    @error('shelf')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
                             <hr>
                             <div class="row">
                                 <div class="col-12" style="text-align: right">
@@ -221,9 +215,9 @@
                                     <button type="submit" class="btn btn-success">SIMPAN</button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

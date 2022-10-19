@@ -53,11 +53,13 @@
                 </div>
             @endif 
             <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <form action="{{ $menu->url }}/{{ $detail->id }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ $menu->url }}/{{ $detail->id }}" method="POST" enctype="multipart/form-data">
+                    <div class="card">
+                        <div class="card-body">
                             @method('put')
                             @csrf
+                            <h6 class="mb-0">Detail {{ $menu->title }}</h6>
+                            <hr>
                             <div class="row mb-2">
                                 <div class="col-3">
                                     <label class="form-label" for="letter_no">Nomor Surat</label>
@@ -105,47 +107,6 @@
                                 </div>
                             </div>
                             <div class="row mb-2">
-                                <div class="col-3">
-                                    <label class="form-label" for="sender_no">Nomor Pengirim (KTP/NPWP)</label>
-                                    <input type="text" class="form-control @error('sender_no') is-invalid @enderror" id="sender_no" name="sender_no" value="{{ old('sender_no', $detail->sender_no) }}">
-                                    @error('sender_no')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-9">
-                                    <label class="form-label" for="sender_name">Nama Pengirim</label>
-                                    <input type="text" class="form-control @error('sender_name') is-invalid @enderror" id="sender_name" name="sender_name" value="{{ old('sender_name', $detail->sender_name) }}">
-                                    @error('sender_name')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-6">
-                                    <label class="form-label" for="sender_position">Posisi Pengirim</label>
-                                    <input type="text" class="form-control @error('sender_position') is-invalid @enderror" id="sender_position" name="sender_position" value="{{ old('sender_position', $detail->sender_position) }}">
-                                    @error('sender_position')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label" for="sender_company">Perusahaan Pengirim</label>
-                                    <input type="text" class="form-control @error('sender_company') is-invalid @enderror" id="sender_company" name="sender_company" value="{{ old('sender_company', $detail->sender_company) }}">
-                                    @error('sender_company')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-12">
-                                    <label class="form-label" for="letter_address">Alamat Pengirim</label>
-                                    <textarea name="letter_address" id="letter_address" class="form-control" cols="30" rows="5">{!! old('letter_address', $detail->letter_address) !!}</textarea>
-                                    @error('letter_address')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-2">
                                 <div class="col-12">
                                     <label class="form-label" for="letter_file">Lampiran Surat</label>
                                     <span class="desc"></span>
@@ -154,7 +115,7 @@
                                     @error('letter_file')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                    <a href="/download/?file={{ $detail->letter_file }}">Testing.pdf</a>
+                                    <a href="/download/?file={{ $detail->letter_file }}">{{ $detail->letter_file_name }}</a>
                                 </div>
                             </div>
                             <div class="row mb-2">
@@ -187,7 +148,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mb-2">
                                 <div class="col-6">
                                     <label class="form-label" for="department">Departemen</label>
                                     <select class="single-select form-control @error('department') is-invalid @enderror" id="department" name="department">
@@ -213,6 +174,55 @@
                                         @endif
                                     </select>
                                     @error('shelf')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Pembatas Detail Surat --}}
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-0">Detail Pengirim</h6>
+                            <hr>
+                            <div class="row mb-2">
+                                <div class="col-3">
+                                    <label class="form-label" for="sender_no">Nomor Pengirim (KTP/NPWP)</label>
+                                    <input type="text" class="form-control @error('sender_no') is-invalid @enderror" id="sender_no" name="sender_no" value="{{ old('sender_no', $detail->sender_no) }}">
+                                    @error('sender_no')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-9">
+                                    <label class="form-label" for="sender_name">Nama Pengirim</label>
+                                    <input type="text" class="form-control @error('sender_name') is-invalid @enderror" id="sender_name" name="sender_name" value="{{ old('sender_name', $detail->sender_name) }}">
+                                    @error('sender_name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6">
+                                    <label class="form-label" for="sender_position">Posisi Pengirim</label>
+                                    <input type="text" class="form-control @error('sender_position') is-invalid @enderror" id="sender_position" name="sender_position" value="{{ old('sender_position', $detail->sender_position) }}">
+                                    @error('sender_position')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label" for="sender_company">Perusahaan Pengirim</label>
+                                    <input type="text" class="form-control @error('sender_company') is-invalid @enderror" id="sender_company" name="sender_company" value="{{ old('sender_company', $detail->sender_company) }}">
+                                    @error('sender_company')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label class="form-label" for="letter_address">Alamat Pengirim</label>
+                                    <textarea name="letter_address" id="letter_address" class="form-control" cols="30" rows="5">{!! old('letter_address', $detail->letter_address) !!}</textarea>
+                                    @error('letter_address')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

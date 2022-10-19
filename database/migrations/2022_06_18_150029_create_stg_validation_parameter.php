@@ -4,16 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMstLetterStatus extends Migration
+class CreateStgValidationParameter extends Migration
 {
     public function up()
     {
-        Schema::create('mst_letter_status', function (Blueprint $table) {
+        Schema::create('stg_validation_parameter', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('back_color')->nullable();
-            $table->string('fore_color')->nullable();
-            $table->boolean('main_status')->default(0);
+            $table->unsignedInteger('menu_id')->nullable();
+            $table->string('field_name');
+            $table->string('expression')->nullable();
+            $table->text('description')->nullable();
             
             // Struktur Baku
             $table->string('access_code')->nullable();
@@ -27,6 +27,6 @@ class CreateMstLetterStatus extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('mst_letter_status');
+        Schema::dropIfExists('stg_validation_parameter');
     }
 }

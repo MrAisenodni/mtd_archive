@@ -21,7 +21,11 @@
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
-    <div class="col-12">
+    <div class="col-12 mt-2">
+        <input class="form-check-input" type="checkbox" value="1" id="main_status" name="main_status" @if (old('main_status') == 1) checked @endif>
+        <label class="form-check-label" for="main_status">Status Utama?</label>
+    </div>
+    <div class="col-12 mt-2">
         <div class="d-grid">
             <button type="submit" class="btn btn-success">SIMPAN</button>
         </div>

@@ -15,7 +15,7 @@ class LetterStatusSeeder extends CsvSeeder
         $this->defaults = [
             'created_by'    => 'Migrasi'
         ];
-        $this->mapping = ['id', 'name', 'back_color', 'fore_color'];
+        $this->mapping = ['id', 'name', 'back_color', 'fore_color', 'main_status'];
         $this->header = false;
     }
 

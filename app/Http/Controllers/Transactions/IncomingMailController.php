@@ -42,6 +42,7 @@ class IncomingMailController extends Controller
         //     'name'              => 'required',
         //     'group'             => 'required',
         // ]);
+        $letter_status = $this->letter_status->select('id')->where('main_status', 1)->where('disabled', 0)->first();
 
         $data = [
             'letter_title'          => $input['letter_title'],
@@ -55,9 +56,8 @@ class IncomingMailController extends Controller
             'sender_position'       => $input['sender_position'],
             'sender_company'        => $input['sender_company'],
             'letter_appendix'       => $input['letter_appendix'],
-            'letter_file'           => $input['letter_file'],
             'letter_type_id'        => $input['letter_type'],
-            'letter_status_id'      => $input['letter_status'],
+            'letter_status_id'      => $letter_status['id'],
             'created_at'            => now(),
             'created_by'            => session()->get('user_id'),
         ];
@@ -67,7 +67,10 @@ class IncomingMailController extends Controller
             $extension = $request->letter_file->getClientOriginalExtension();  // Get Extension
             $fileName =  date('Ymd', strtotime($request->letter_date)).'_'.$request->letter_title.'_'.$request->sender_name.'.'.$extension;  // Concatenate both to get FileName
             $filePath = $file->storeAs('surat_masuk', $fileName, 'public');  
-            $data['letter_file'] = $filePath; 
+            $data += [
+                'letter_file'       => $filePath,
+                'letter_file_name'  => $fileName,
+            ]; 
         }
 
         $this->incoming_mail->insert($data);
@@ -80,7 +83,7 @@ class IncomingMailController extends Controller
         $data = [
             'menu'              => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
             'letter_types'      => $this->letter_type->select('id', 'name')->where('disabled', 0)->get(),
-            'letter_statuses'   => $this->letter_status->select('id', 'name')->where('disabled', 0)->get(),
+            'letter_statuses'   => $this->letter_status->select('id', 'name')->where('disabled', 0)->where('main_status', '<>', 1)->get(),
             'departments'       => $this->department->select('id', 'name')->where('disabled', 0)->get(),
             'shelfs'            => $this->shelf->select('id', 'name', 'chest_id')->where('disabled', 0)->get(),
             'detail'            => $this->incoming_mail->where('id', $id)->where('disabled', 0)->first(),
@@ -122,7 +125,6 @@ class IncomingMailController extends Controller
                 'sender_position'       => $input['sender_position'],
                 'sender_company'        => $input['sender_company'],
                 'letter_appendix'       => $input['letter_appendix'],
-                'letter_file'           => $input['letter_file'],
                 'letter_type_id'        => $input['letter_type'],
                 'letter_status_id'      => $input['letter_status'],
                 'created_at'            => now(),
@@ -135,7 +137,10 @@ class IncomingMailController extends Controller
                 $extension = $request->letter_file->getClientOriginalExtension();  // Get Extension
                 $fileName =  date('Ymd', strtotime($request->letter_date)).'_'.$request->letter_title.'_'.$request->sender_name.'.'.$extension;  // Concatenate both to get FileName
                 $filePath = $file->storeAs('surat_masuk', $fileName, 'public');  
-                $data['letter_file'] = $filePath;
+                $data += [
+                    'letter_file'       => $filePath,
+                    'letter_file_name'  => $fileName,
+                ];
             }
     
             $this->incoming_mail->where('id', $id)->update($data);

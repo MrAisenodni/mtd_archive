@@ -1,5 +1,5 @@
-1;Ditutup;#1300a6;#ffffff
-2;Distribusi;#0082a6;#000000
-3;Dibuka;#eb3434;#ffffff
-4;Respon Sebagian;#f9ff59;#000000
-5;Direspon;#49eb34;#000000
+1;Ditutup;#1300a6;#ffffff;0
+2;Distribusi;#0082a6;#000000;0
+3;Dibuka;#eb3434;#ffffff;1
+4;Respon Sebagian;#f9ff59;#000000;0
+5;Direspon;#49eb34;#000000;0

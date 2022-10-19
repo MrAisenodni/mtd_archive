@@ -26,6 +26,7 @@ class CreateTrxIncomingMail extends Migration
             $table->unsignedInteger('department_id')->nullable(); // Join ke Tabel mst_department
             $table->unsignedInteger('shelf_id')->nullable(); // Join ke Tabel mst_shelf
             $table->text('letter_file')->nullable(); // Lokasi penyimpanan Surat Masuk
+            $table->text('letter_file_name')->nullable(); // Nama File Surat Masuk
 
             // Struktur Baku
             $table->string('access_code')->nullable();
