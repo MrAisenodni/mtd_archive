@@ -1,62 +1,12 @@
-9154;Rehab Medik
-9174;Rawat Jalan
-9310;Muzdalifah Atas
-9311;Muzdalifah Bawah
-9313;Arafah Bawah
-9314;Multazam Bawah
-9320;Shafa-Shafa
-9321;Arafah Atas
-9322;Multazam Atas
-9323;Stroke Center
-9331;Matahari Dua
-9332;Marwah Atas
-9333;Marwah Bawah
-9341;Melati
-9342;Shafa Anisa
-9350;ICU
-9351;Perinatologi
-9352;HCU
-9353;Badar
-9354;Zam-zam
-9403;Hemodialisa
-9404;Laboratorium Klinik
-9407;Radiologi
-9410;Kamar Bedah
-9411;Anesthesi
-9413;Gizi
-9415;Laboratorium Klinik
-9454;ODC
-9510;Unit Gawat Darurat
-9611;Pemeliharan & kesling
-9614;Akuntansi
-9616;Satuan Pengendali Intern
-9617;Humas & Legal
-9619;Pengembangan Organisasi & Mutu
-9620;Manajemen Resiko
-9623;Asdir Keperawatan
-9627;Gizi
-9628;Rekam Medik
-9630;Pemeliharaan & Kesling
-9633;Logistik
-9636;Pelayanan Umum & Perkantoran
-9639;Pemasaran & Pencitraan
-9640;Keuangan
-9645;Akuntansi
-9648;Sumber Daya Insani
-9649;Bimbingan Rohani
-9655;Rawat Inap
-9656;Farmasi & Sterilisasi
-9657;Radiologi & Diagnostik
-9658;DIAGNOSTIK
-9660;Lab. Klinik & Bank Darah
-9665;Pelayanan Medis Kudus
-9667;Sumber Daya Insani
-9668;Pendidikan & Pelatihan
-9673;Sistem Informasi Manajemen Rumah Sakit
-9676;PIRS
-9677;K3
-9678;KPRS
-9679;MUTU
-9680;Rehabilitasi Medik
-9683;Panitia PPIRS
-9904;QMR
+DU001;Direktur Utama
+DU002;Direktur Operasional
+DU003;Direktur Teknis
+DU004;Direktur Keuangan
+SU001;Sekretaris Direksi
+MG001;Manager Utama
+MG002;Manager Operasional
+MG003;Manager Teknis
+MG004;Manager Keuangan
+KA001;Kepala Seksi Operasional
+KA002;Kepala Seksi Teknis
+KA003;Kepala Seksi Keuangan

@@ -12,6 +12,7 @@ class CreateMstDepartmentGroup extends Migration
             $table->id();
             $table->string('code', 5)->nullable();
             $table->string('name');
+            $table->unsignedInteger('user_id')->nullable(); // Join ke Tabel mst_user dengan role Manager/Head
             
             // Struktur Baku
             $table->string('access_code')->nullable();

@@ -15,7 +15,7 @@ class DepartmentSeeder extends CsvSeeder
         $this->defaults = [
             'created_by'    => 'Migrasi'
         ];
-        $this->mapping = ['code', 'name', 'group_id', 'doc_ref'];
+        $this->mapping = ['code', 'name', 'group_id'];
         $this->header = false;
     }
 

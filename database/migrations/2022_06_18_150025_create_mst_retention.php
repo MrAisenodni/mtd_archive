@@ -10,7 +10,8 @@ class CreateMstRetention extends Migration
     {
         Schema::create('mst_retention', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->integer('time');
+            $table->enum('type', ['year', 'month', 'day']);
             
             // Struktur Baku
             $table->string('access_code')->nullable();

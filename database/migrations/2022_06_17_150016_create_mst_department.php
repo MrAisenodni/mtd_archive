@@ -13,7 +13,6 @@ class CreateMstDepartment extends Migration
             $table->string('code')->nullable();
             $table->string('name');
             $table->unsignedInteger('group_id')->nullable(); // Join ke Tabel mst_department_group
-            $table->boolean('doc_ref')->default(1);
             $table->unsignedInteger('user_id')->nullable(); // Join ke Tabel mst_user dengan role Manager/Head
             
             // Struktur Baku

@@ -15,7 +15,7 @@ class RetentionSeeder extends CsvSeeder
         $this->defaults = [
             'created_by'    => 'Migrasi'
         ];
-        $this->mapping = ['id', 'name'];
+        $this->mapping = ['id', 'time', 'type'];
         $this->header = false;
     }
 
