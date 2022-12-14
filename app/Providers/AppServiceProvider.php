@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Models\Masters\User;
 use App\Models\Settings\{
     Menu,
-    Provider
+    Provider,
+    User,
 };
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;

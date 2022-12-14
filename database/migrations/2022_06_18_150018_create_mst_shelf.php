@@ -11,7 +11,7 @@ class CreateMstShelf extends Migration
         Schema::create('mst_shelf', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedInteger('chest_id')->nullable();
+            $table->unsignedInteger('chest_id')->nullable(); // Join ke Tabel mst_chest
             
             // Struktur Baku
             $table->string('access_code')->nullable();

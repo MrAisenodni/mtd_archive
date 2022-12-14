@@ -4,20 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMstCompany extends Migration
+class CreateMstLetterClassification extends Migration
 {
     public function up()
     {
-        Schema::create('mst_company', function (Blueprint $table) {
+        Schema::create('mst_letter_classification', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 10)->unique();
             $table->string('name');
-            $table->string('address_1');
-            $table->string('address_2', 3)->nullable(); // For RT
-            $table->string('address_3', 3)->nullable(); // For RW
-            $table->string('phone_no', 50)->nullable();
-            $table->string('home_no', 50)->nullable();
-            $table->string('email', 100)->unique()->nullable();
             
             // Struktur Baku
             $table->string('access_code')->nullable();
@@ -31,6 +24,6 @@ class CreateMstCompany extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('mst_company');
+        Schema::dropIfExists('mst_letter_classification');
     }
 }

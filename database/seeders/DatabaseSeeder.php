@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             Settings\ProviderSeeder::class,
   
             // For User Login
-            Masters\UserSeeder::class,
+            Settings\UserSeeder::class,
             Settings\LoginSeeder::class,
 
             // For Master
@@ -31,8 +31,9 @@ class DatabaseSeeder extends Seeder
             Masters\DepartmentGroupSeeder::class,
             Masters\LetterStatusSeeder::class,
             Masters\LetterTypeSeeder::class,
-            Masters\PositionSeeder::class,
+            Masters\ReligionSeeder::class,
             Masters\RetentionSeeder::class,
+            Masters\PositionSeeder::class,
             Masters\SaveMethodSeeder::class,
             Masters\CountrySeeder::class,
             Masters\ProvinceSeeder::class,

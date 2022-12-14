@@ -6,16 +6,16 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use JeroenZwart\CsvSeeder\CsvSeeder;
 
-class UserSeeder extends CsvSeeder
+class LetterClassificationSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->file = '/database/csv/User.csv';
-        $this->tablename = 'mst_user';
+        $this->file = '/database/csv/LetterClassification.csv';
+        $this->tablename = 'mst_letter_classification';
         $this->defaults = [
             'created_by'    => 'Migrasi'
         ];
-        $this->mapping = ['id', 'nik', 'full_name', 'gender', 'birth_place', 'birth_date', 'email'];
+        $this->mapping = ['id', 'name'];
         $this->header = false;
     }
 

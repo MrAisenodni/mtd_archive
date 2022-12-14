@@ -12,6 +12,7 @@ use App\Http\Controllers\Masters\{
     LetterTypeController,
     PositionController,
     ProvinceController,
+    ReligionController,
     RetentionController,
     SaveMethodController,
     ShelfController,
@@ -22,6 +23,7 @@ use App\Http\Controllers\Settings\{
     FileController,
     LoginController,
     ProviderController,
+    UserController,
 };
 use App\Http\Controllers\Transactions\{
     DeletedMailController,
@@ -62,6 +64,7 @@ Route::middleware('authcheck')->group(function() {
     Route::resource('/master/jenis-surat', LetterTypeController::class);
     Route::resource('/master/jabatan', PositionController::class);
     Route::resource('/master/provinsi', ProvinceController::class);
+    Route::resource('/master/agama', ReligionController::class);
     Route::resource('/master/retensi', RetentionController::class);
     Route::resource('/master/metode-simpan', SaveMethodController::class);
     Route::resource('/master/rak', ShelfController::class);
@@ -69,6 +72,7 @@ Route::middleware('authcheck')->group(function() {
     Route::resource('/master/kelurahan', WardController::class);
 
     // Route untuk Setting
+    Route::resource('/pengaturan/pengguna', UserController::class);
     Route::resource('/pengaturan/provider', ProviderController::class);
 
     // Route untuk Manajemen Surat

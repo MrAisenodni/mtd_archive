@@ -14,11 +14,11 @@ use App\Models\Masters\{
     LetterType,
     Position,
     Province,
+    Religion,
     Retention,
     SaveMethod,
     Shelf,
     StorageTime,
-    User,
     Ward,
 }; 
 use App\Models\Settings\{
@@ -26,6 +26,7 @@ use App\Models\Settings\{
     Menu,
     Provider,
     SubMenu,
+    User,
 };
 use App\Models\Transactions\{
     DeletedMail,
@@ -50,6 +51,7 @@ class Controller extends BaseController
         $this->menu = new Menu();
         $this->provider = new Provider();
         $this->submenu = new SubMenu();
+        $this->user = new User();
 
         // Global Variabel untuk Master
         $this->chest = new Chest();
@@ -63,11 +65,11 @@ class Controller extends BaseController
         $this->letter_type = new LetterType();
         $this->position = new Position();
         $this->province = new Province();
+        $this->religion = new Religion();
         $this->retention = new Retention();
         $this->save_method = new SaveMethod();
         $this->shelf = new Shelf();
         $this->storage_time = new StorageTime();
-        $this->user = new User();
         $this->ward = new Ward();
 
         // Global Variabel untuk Transactions
