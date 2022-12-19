@@ -10,6 +10,7 @@ use App\Models\Masters\{
     District,
     Department,
     DepartmentGroup,
+    LetterOrigin,
     LetterStatus,
     LetterType,
     Position,
@@ -61,6 +62,7 @@ class Controller extends BaseController
         $this->department = new Department();
         $this->department_group = new DepartmentGroup();
         $this->district = new District();
+        $this->letter_origin = new LetterOrigin();
         $this->letter_status = new LetterStatus();
         $this->letter_type = new LetterType();
         $this->position = new Position();

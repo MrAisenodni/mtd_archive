@@ -13,7 +13,7 @@ class CompanyController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'data'          => $this->company->select('id', 'code', 'name', 'address_1', 'phone_no', 'home_no', 'fax_no')->where('disabled', 0)->paginate(10),
+            'data'          => $this->company->select('id', 'code', 'name', 'address_1', 'address_2', 'address_3', 'phone_no_1', 'phone_no_2', 'email')->where('disabled', 0)->paginate(10),
         ];
 
         return view('masters.company.index', $data);
@@ -23,6 +23,8 @@ class CompanyController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
+            'wards'         => $this->ward->select('id', 'name', 'district_id')->where('disabled', 0)->get(),
+            // 'provinces'     => $this->province->select('id', 'name', 'country_id')->where('disabled', 0)->get(),
         ];
 
         return view('masters.company.create', $data);
@@ -33,10 +35,13 @@ class CompanyController extends Controller
         $input = $request->all();
 
         $validate = $request->validate([
-            'code'              => 'required|unique:mst_company,code,1,disabled',
+            'code'              => 'required|max:10|unique:mst_company,code,1,disabled',
             'name'              => 'required',
             'address_1'         => 'required',
-            'phone_no'          => 'required',
+            'address_2'         => 'max:3',
+            'address_3'         => 'max:3',
+            'phone_no_1'        => 'required',
+            'email'             => 'required',
         ]);
 
         $data = [
@@ -45,9 +50,10 @@ class CompanyController extends Controller
             'address_1'     => $input['address_1'],
             'address_2'     => $input['address_2'],
             'address_3'     => $input['address_3'],
-            'phone_no'      => $input['phone_no'],
-            'home_no'       => $input['home_no'],
-            'fax_no'        => $input['fax_no'],
+            'phone_no_1'    => $input['phone_no_1'],
+            'phone_no_2'    => $input['phone_no_2'],
+            'phone_no_3'    => $input['phone_no_3'],
+            'email'         => $input['email'],
             'created_at'    => now(),
             'created_by'    => session()->get('user_id'),
         ];
@@ -61,7 +67,9 @@ class CompanyController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'detail'        => $this->company->select('id', 'code', 'name', 'address_1', 'address_2', 'address_3', 'phone_no', 'home_no', 'fax_no')->where('id', $id)->where('disabled', 0)->first(),
+            'detail'        => $this->company->select('id', 'code', 'name', 'address_1', 'address_2', 'address_3', 'address_2', 'address_3', 'phone_no_1', 'phone_no_2', 'email')->where('id', $id)->where('disabled', 0)->first(),
+            'wards'         => $this->ward->select('id', 'name', 'district_id')->where('disabled', 0)->get(),
+            // 'provinces'     => $this->province->select('id', 'name', 'country_id')->where('disabled', 0)->get(),
         ];
         
         return view('masters.company.edit', $data);
@@ -83,10 +91,13 @@ class CompanyController extends Controller
             return redirect($this->path)->with('status', 'Data Berhasil Dihapus.');
         } else {
             $validate = $request->validate([
-                'code'              => 'required|unique:mst_company,code,'.$id.',id,disabled,1',
+                'code'              => 'required|max:10|unique:mst_company,code,'.$id.',id,disabled,1',
                 'name'              => 'required',
                 'address_1'         => 'required',
-                'phone_no'          => 'required',
+                'address_2'         => 'max:3',
+                'address_3'         => 'max:3',
+                'phone_no_1'        => 'required',
+                'email'             => 'required',
             ]);
     
             $data = [
@@ -95,9 +106,10 @@ class CompanyController extends Controller
                 'address_1'     => $input['address_1'],
                 'address_2'     => $input['address_2'],
                 'address_3'     => $input['address_3'],
-                'phone_no'      => $input['phone_no'],
-                'home_no'       => $input['home_no'],
-                'fax_no'        => $input['fax_no'],
+                'phone_no_1'    => $input['phone_no_1'],
+                'phone_no_2'    => $input['phone_no_2'],
+                'phone_no_3'    => $input['phone_no_3'],
+                'email'         => $input['email'],
                 'updated_at'    => now(),
                 'updated_by'    => session()->get('user_id'),
             ];
@@ -146,7 +158,7 @@ class CompanyController extends Controller
             ->where('fax_no', 'LIKE', '%'.$searchValue.'%')->count();
         
         // Fetch Records
-        $records = $this->company->select('id', 'code', 'name', 'address_1', 'phone_no', 'home_no', 'fax_no')
+        $records = $this->company->select('id', 'code', 'name', 'address_1', 'address_2', 'address_3', 'phone_no_1', 'phone_no_2', 'email')
             ->where('disabled', 0)->where('code', 'LIKE', '%'.$searchValue.'%')->where('name', 'LIKE', '%'.$searchValue.'%')
             ->where('address_1', 'LIKE', '%'.$searchValue.'%')->where('phone_no', 'LIKE', '%'.$searchValue.'%')
             ->where('home_no', 'LIKE', '%'.$searchValue.'%')->where('fax_no', 'LIKE', '%'.$searchValue.'%')

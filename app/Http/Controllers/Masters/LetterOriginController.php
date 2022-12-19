@@ -5,37 +5,31 @@ namespace App\Http\Controllers\Masters;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DepartmentGroupController extends Controller
+class LetterOriginController extends Controller
 {
-    protected $path = '/master/kelompok-departemen';
+    protected $path = '/master/asal-surat';
 
     public function index()
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'data'          => $this->department_group->select('id', 'code', 'name')->where('disabled', 0)->get(),
+            'data'          => $this->letter_origin->select('id', 'name')->where('disabled', 0)->get(),
         ];
 
-        return view('masters.department_group.index', $data);
+        return view('masters.letter_origin.index', $data);
     }
 
     public function store(Request $request)
     {
         $input = $request->all();
 
-        $validate = $request->validate([
-            'code'              => 'required|max:5|unique:mst_department_group,code,1,disabled',
-            'name'              => 'required',
-        ]);
-
         $data = [
-            'code'          => $input['code'],
             'name'          => $input['name'],
             'created_at'    => now(),
             'created_by'    => session()->get('user_id'),
         ];
 
-        $this->department_group->insert($data);
+        $this->letter_origin->insert($data);
 
         return redirect(url()->previous())->with('status', 'Data Berhasil Ditambahkan.');
     }
@@ -44,30 +38,24 @@ class DepartmentGroupController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'detail'        => $this->department_group->select('id', 'code', 'name')->where('id', $id)->where('disabled', 0)->first(),
-            'data'          => $this->department_group->select('id', 'code', 'name')->where('disabled', 0)->get(),
+            'detail'        => $this->letter_origin->select('id', 'name')->where('id', $id)->where('disabled', 0)->first(),
+            'data'          => $this->letter_origin->select('id', 'name')->where('disabled', 0)->get(),
         ];
         
-        return view('masters.department_group.index', $data);
+        return view('masters.letter_origin.index', $data);
     }
 
     public function update(Request $request, $id)
     {
         $input = $request->all();
 
-        $validate = $request->validate([
-            'code'              => 'required|max:5|unique:mst_department_group,code,'.$id.',id,disabled,1',
-            'name'              => 'required',
-        ]);
-
         $data = [
-            'code'          => $input['code'],
             'name'          => $input['name'],
             'updated_at'    => now(),
             'updated_by'    => session()->get('user_id'),
         ];
 
-        $this->department_group->where('id', $id)->update($data);
+        $this->letter_origin->where('id', $id)->update($data);
 
         return redirect(url()->previous())->with('status', 'Data Berhasil Diubah.');
     }
@@ -80,7 +68,7 @@ class DepartmentGroupController extends Controller
             'updated_by'    => session()->get('user_id'),
         ];
 
-        $this->department_group->where('id', $id)->update($data);
+        $this->letter_origin->where('id', $id)->update($data);
 
         return redirect($this->path)->with('status', 'Data Berhasil Dihapus.');
     }

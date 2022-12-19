@@ -3,7 +3,6 @@
 @section('title', $menu->title)
 
 @section('styles')
-    {{-- Data Table --}}
     <link href="{{ asset('/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/plugins/sweet-alert/sweetalert2.min.css') }}" rel="stylesheet" />
 @endsection
@@ -50,7 +49,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">No</th>
-                                        <th>{{ $menu->title }}</th>
+                                        <th>Nama</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -59,16 +58,7 @@
                                         @foreach ($data as $item)
                                             <tr data-id="{{ $item->id }}">
                                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                                <td>
-                                                    {{ $item->time }}
-                                                    @if ($item->type == 'year')
-                                                        Tahun
-                                                    @elseif ($item->type == 'month')
-                                                        Bulan
-                                                    @else
-                                                        Hari
-                                                    @endif
-                                                </td>
+                                                <td>{{ $item->name }}</td>
                                                 <td class="text-center" style="width: 5%">
                                                     <a href="{{ $menu->url }}/{{ $item->id }}"><i class="bx bx-edit"></i></a>
                                                     <form action="{{ $menu->url }}/{{ $item->id }}" method="POST" class="d-inline">
@@ -90,9 +80,9 @@
                 <div class="card">
                     <div class="card-body">
                         @if (request()->path() == substr($menu->url, 1))
-                            @include('masters.retention.create')
+                            @include('masters.letter_origin.create')
                         @else
-                            @include('masters.retention.edit')
+                            @include('masters.letter_origin.edit')
                         @endif
                     </div>
                 </div>

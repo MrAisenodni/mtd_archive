@@ -68,31 +68,71 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <label class="form-label" for="group">Kelompok {{ $menu->title }}</label>
-                                    <select class="single-select form-control @error('group') is-invalid @enderror" id="group" name="group">
-                                        @if ($groups)
-                                            @foreach ($groups as $item)
-                                                <option value="{{ $item->id }}" @if(old('group', $detail->group_id) == $item->id) selected @endif>{{ $item->name }}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                    @error('group')
+                            <div class="row mb-2">
+                                <div class="col-12">
+                                    <label class="form-label" for="code">Alamat</label>
+                                    <textarea name="address_1" id="address_1" cols="30" rows="5" class="form-control @error('address_1') is-invalid @enderror">{{ old('address_1', $detail->address_1) }}</textarea>
+                                    @error('address_1')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="col-6">
-                                    <label class="form-label" for="manager">Manager</label>
-                                    <select class="single-select form-control @error('manager') is-invalid @enderror" id="manager" name="manager">
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-2">
+                                    <label class="form-label" for="address_2">RT</label>
+                                    <input type="text" class="form-control @error('address_2') is-invalid @enderror" id="address_2" name="address_2" value="{{ old('address_2', $detail->address_2) }}">
+                                    @error('address_2')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-2">
+                                    <label class="form-label" for="address_3">RW</label>
+                                    <input type="text" class="form-control @error('address_3') is-invalid @enderror" id="address_3" name="address_3" value="{{ old('address_3', $detail->address_3) }}">
+                                    @error('address_3')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-8">
+                                    <label class="form-label" for="ward">Kelurahan</label>
+                                    <select class="select-min form-control @error('ward') is-invalid @enderror" id="ward" name="ward">
                                         <option value="">--- SILAHKAN PILIH ---</option>
-                                        @if ($managers)
-                                            @foreach ($managers as $item)
-                                                <option value="{{ $item->id }}" @if(old('manager', $detail->user_id) == $item->id) selected @endif>{{ $item->full_name }}</option>
+                                        @if ($wards)
+                                            @foreach ($wards as $item)
+                                                <option value="{{ $item->id }}" @if(old('ward', $detail->ward_id) == $item->id) selected @endif>{{ $item->name }}</option>
                                             @endforeach
                                         @endif
                                     </select>
-                                    @error('manager')
+                                    @error('ward')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3">
+                                    <label class="form-label" for="phone_no_1">Nomor HP 1</label>
+                                    <input type="text" class="form-control @error('phone_no_1') is-invalid @enderror" id="phone_no_1" name="phone_no_1" value="{{ old('phone_no_1', $detail->phone_no_1) }}">
+                                    @error('phone_no_1')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-label" for="phone_no_2">Nomor HP 2</label>
+                                    <input type="text" class="form-control @error('phone_no_2') is-invalid @enderror" id="phone_no_2" name="phone_no_2" value="{{ old('phone_no_2', $detail->phone_no_2) }}">
+                                    @error('phone_no_2')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-label" for="phone_no_3">Nomor Telp</label>
+                                    <input type="text" class="form-control @error('phone_no_3') is-invalid @enderror" id="phone_no_3" name="phone_no_3" value="{{ old('phone_no_3', $detail->phone_no_3) }}">
+                                    @error('phone_no_3')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-label" for="email">Email</label>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $detail->email) }}">
+                                    @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

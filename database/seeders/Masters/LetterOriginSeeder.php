@@ -6,16 +6,16 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use JeroenZwart\CsvSeeder\CsvSeeder;
 
-class CompanySeeder extends CsvSeeder
+class LetterOriginSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->file = '/database/csv/Company.csv';
-        $this->tablename = 'mst_company';
+        $this->file = '/database/csv/LetterOrigin.csv';
+        $this->tablename = 'mst_letter_origin';
         $this->defaults = [
             'created_by'    => 'Migrasi'
         ];
-        $this->mapping = ['code', 'name', 'address_1', 'phone_no_1', 'phone_no_2'];
+        $this->mapping = ['id', 'name'];
         $this->header = false;
     }
 

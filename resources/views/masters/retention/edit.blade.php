@@ -2,16 +2,20 @@
     @method('PUT')
     @csrf
     <div class="col-12">
-        <label class="form-label" for="code">Kode {{ $menu->title }}</label>
-        <input type="text" class="form-control @error('code') is-invalid @enderror" id="code" name="code" value="{{ old('code', $detail->code) }}">
-        @error('code')
+        <label class="form-label" for="time">{{ $menu->title }}</label>
+        <input type="text" class="form-control @error('time') is-invalid @enderror" id="time" name="time" value="{{ old('time', $detail->time) }}">
+        @error('time')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
     <div class="col-12">
-        <label class="form-label" for="name">{{ $menu->title }}</label>
-        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $detail->name) }}">
-        @error('name')
+        <label class="form-label" for="type">Tipe Waktu</label>
+        <select class="single-select form-control @error('type') is-invalid @enderror" id="type" name="type">
+            <option value="day" @if (old('type', $detail->type) == 'day') selected @endif>Hari</option>
+            <option value="month" @if (old('type', $detail->type) == 'month') selected @endif>Bulan</option>
+            <option value="year" @if (old('type', $detail->type) == 'year') selected @endif>Tahun</option>
+        </select>
+        @error('type')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>

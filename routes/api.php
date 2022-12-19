@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\PaginateController;
+use App\Http\Controllers\Api\ProvinceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/data-kelurahan', [PaginateController::class, 'get_wards']);
+Route::resource('/data-provinsi',  ProvinceController::class);
+Route::resource('/data-kota',  CityController::class);

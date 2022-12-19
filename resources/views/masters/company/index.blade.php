@@ -58,10 +58,11 @@
                                         <th>{{ $menu->title }}</th>
                                         <th>Alamat</th>
                                         <th>No HP/No Telp/No Fax</th>
+                                        <th>Email</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
-                                {{-- <tbody>
+                                <tbody>
                                     @if ($data)
                                         @foreach ($data as $item)
                                             <tr data-id="{{ $item->id }}">
@@ -69,7 +70,8 @@
                                                 <td>{{ $item->code }}</td>
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->address_1 }}</td>
-                                                <td>{{ $item->phone_no }}/@if($item->home_no) {{ $item->home_no }} @else - @endif/@if($item->fax_no) {{ $item->fax_no }} @else - @endif</td>
+                                                <td>{{ $item->phone_no_1 }}/@if($item->phone_no_2) {{ $item->phone_no_2 }} @else - @endif/@if($item->phone_no_2) {{ $item->phone_no_2 }} @else - @endif</td>
+                                                <td>{{ $item->email }}</td>
                                                 <td class="text-center" style="width: 5%">
                                                     <a href="{{ $menu->url }}/{{ $item->id }}"><i class="bx bx-edit"></i></a>
                                                     <form action="{{ $menu->url }}/{{ $item->id }}" method="POST" class="d-inline">
@@ -81,7 +83,7 @@
                                             </tr>
                                         @endforeach
                                     @endif
-                                </tbody> --}}
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -103,7 +105,7 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $(document).ready(function(){
 
         // DataTable
@@ -116,12 +118,12 @@
                 { data: 'code' },
                 { data: 'name' },
                 { data: 'address_1' },
-                { data: 'phone_no' },
+                { data: 'phone_no_1' },
             ]
         });
 
         });
-    </script>
+    </script> --}}
 
     {{-- Data Table --}}
     <script src="{{ asset('/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>

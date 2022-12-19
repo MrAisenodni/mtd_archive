@@ -13,7 +13,7 @@ class RetentionController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'data'          => $this->retention->select('id', 'name')->where('disabled', 0)->get(),
+            'data'          => $this->retention->select('id', 'time', 'type')->where('disabled', 0)->get(),
         ];
 
         return view('masters.retention.index', $data);
@@ -24,11 +24,13 @@ class RetentionController extends Controller
         $input = $request->all();
 
         $validate = $request->validate([
-            'name'              => 'required',
+            'time'              => 'required',
+            'type'              => 'required',
         ]);
 
         $data = [
-            'name'          => $input['name'],
+            'time'          => $input['time'],
+            'type'          => $input['type'],
             'created_at'    => now(),
             'created_by'    => session()->get('user_id'),
         ];
@@ -42,8 +44,8 @@ class RetentionController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'detail'        => $this->retention->select('id', 'name')->where('id', $id)->where('disabled', 0)->first(),
-            'data'          => $this->retention->select('id', 'name')->where('disabled', 0)->get(),
+            'detail'        => $this->retention->select('id', 'time', 'type')->where('id', $id)->where('disabled', 0)->first(),
+            'data'          => $this->retention->select('id', 'time', 'type')->where('disabled', 0)->get(),
         ];
         
         return view('masters.retention.index', $data);
@@ -54,11 +56,13 @@ class RetentionController extends Controller
         $input = $request->all();
 
         $validate = $request->validate([
-            'name'              => 'required',
+            'time'              => 'required',
+            'type'              => 'required',
         ]);
 
         $data = [
-            'name'          => $input['name'],
+            'time'          => $input['time'],
+            'type'          => $input['type'],
             'updated_at'    => now(),
             'updated_by'    => session()->get('user_id'),
         ];

@@ -8,6 +8,7 @@ use App\Http\Controllers\Masters\{
     DepartmentController,
     DepartmentGroupController,
     DistrictController,
+    LetterOriginController,
     LetterStatusController,
     LetterTypeController,
     PositionController,
@@ -60,6 +61,7 @@ Route::middleware('authcheck')->group(function() {
     Route::resource('/master/departemen', DepartmentController::class);
     Route::resource('/master/kecamatan', DistrictController::class);
     Route::resource('/master/kelompok-departemen', DepartmentGroupController::class);
+    Route::resource('/master/asal-surat', LetterOriginController::class);
     Route::resource('/master/status-surat', LetterStatusController::class);
     Route::resource('/master/jenis-surat', LetterTypeController::class);
     Route::resource('/master/jabatan', PositionController::class);

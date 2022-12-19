@@ -2,7 +2,7 @@
     @method('PUT')
     @csrf
     <div class="col-12">
-        <label class="form-label" for="name">{{ $menu->title }}</label>
+        <label class="form-label" for="name">Nama {{ $menu->title }}</label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $detail->name) }}">
         @error('name')
             <div class="invalid-feedback">{{ $message }}</div>

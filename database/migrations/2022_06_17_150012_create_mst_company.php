@@ -15,8 +15,10 @@ class CreateMstCompany extends Migration
             $table->string('address_1');
             $table->string('address_2', 3)->nullable(); // For RT
             $table->string('address_3', 3)->nullable(); // For RW
-            $table->string('phone_no', 50)->nullable();
-            $table->string('home_no', 50)->nullable();
+            $table->unsignedInteger('ward_id')->nullable(); // Join ke Tabel mst_ward (Kelurahan)
+            $table->string('phone_no_1', 25);
+            $table->string('phone_no_2', 25)->nullable();
+            $table->string('phone_no_3', 25)->nullable();
             $table->string('email', 100)->unique()->nullable();
             
             // Struktur Baku

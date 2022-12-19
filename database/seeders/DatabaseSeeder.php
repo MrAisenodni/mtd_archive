@@ -23,12 +23,16 @@ class DatabaseSeeder extends Seeder
             Settings\UserSeeder::class,
             Settings\LoginSeeder::class,
 
+            // For Validation Parameter
+            Settings\AttributesSeeder::class,
+            
             // For Master
             Masters\ChestSeeder::class,
             Masters\ShelfSeeder::class,
             Masters\CompanySeeder::class,
             Masters\DepartmentSeeder::class,
             Masters\DepartmentGroupSeeder::class,
+            Masters\LetterOriginSeeder::class,
             Masters\LetterStatusSeeder::class,
             Masters\LetterTypeSeeder::class,
             Masters\ReligionSeeder::class,

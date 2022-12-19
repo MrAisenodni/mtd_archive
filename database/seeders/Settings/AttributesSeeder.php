@@ -1,21 +1,21 @@
 <?php
 
-namespace Database\Seeders\Masters;
+namespace Database\Seeders\Settings;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use JeroenZwart\CsvSeeder\CsvSeeder;
 
-class CompanySeeder extends CsvSeeder
+class AttributesSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->file = '/database/csv/Company.csv';
-        $this->tablename = 'mst_company';
+        $this->file = '/database/csv/Attributes.csv';
+        $this->tablename = 'stg_attributes';
         $this->defaults = [
             'created_by'    => 'Migrasi'
         ];
-        $this->mapping = ['code', 'name', 'address_1', 'phone_no_1', 'phone_no_2'];
+        $this->mapping = ['field_name', 'description'];
         $this->header = false;
     }
 
