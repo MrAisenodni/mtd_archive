@@ -22,7 +22,7 @@
         </li>
         @if ($menus)
             @foreach ($menus as $menu)
-                @if ($menu->parent == 0)
+                @if ($menu->parent == 0 && $menu->menuaccess->view == 1)
                     <li>
                         <a href="{{ $menu->url }}">
                             <div class="parent-icon"><i class="{{ $menu->icon }}"></i>
@@ -31,21 +31,23 @@
                         </a>
                     </li>
                 @else
-                    <li>
-                        <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon"><i class="{{ $menu->icon }}"></i>
-                            </div>
-                            <div class="menu-title">{{ $menu->title }}</div>
-                        </a>
-                        <ul>
-                            @if ($menu->submenus)
-                                @foreach ($menu->submenus as $submenu)
-                                    <li> <a href="{{ $submenu->url }}"><i class="{{ $submenu->icon }}"></i>{{ $submenu->title }}</a>
-                                    </li>
-                                @endforeach
-                            @endif
-                        </ul>
-                    </li>
+                    @if ($menu->menuaccess->view == 1)
+                        <li>
+                            <a href="javascript:;" class="has-arrow">
+                                <div class="parent-icon"><i class="{{ $menu->icon }}"></i>
+                                </div>
+                                <div class="menu-title">{{ $menu->title }}</div>
+                            </a>
+                            <ul>
+                                @if ($menu->submenus && $menu->menuaccess->view == 1)
+                                    @foreach ($menu->submenus as $submenu)
+                                        <li> <a href="{{ $submenu->url }}"><i class="{{ $submenu->icon }}"></i>{{ $submenu->title }}</a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </li>
+                    @endif
                 @endif
             @endforeach
         @endif

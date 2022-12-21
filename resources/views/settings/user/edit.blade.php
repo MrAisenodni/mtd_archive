@@ -22,11 +22,13 @@
                     </ol>
                 </nav>
             </div>
+            @if ($access->add == 1)
             <div class="ms-auto">
                 <div class="btn-group">
                     <a href="{{ $menu->url }}/create" class="btn btn-primary">Tambah</a>
                 </div>
             </div>
+            @endif
         </div>
         <!--end breadcrumb-->
         <h6 class="mb-0 text-uppercase">Ubah {{ $menu->title }}</h6>

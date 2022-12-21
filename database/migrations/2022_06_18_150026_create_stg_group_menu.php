@@ -10,6 +10,8 @@ class CreateStgGroupMenu extends Migration
     {
         Schema::create('stg_group_menu', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('user_id'); // Join ke Tabel stg_login
+            $table->unsignedInteger('menu_id'); // Join ke Tabel stg_menu/stg_submenu
             $table->string('name', 100);
             $table->text('description')->nullable();
             

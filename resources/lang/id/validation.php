@@ -208,6 +208,7 @@ return [
         'owner_npwp'                => 'NPWP Pemilik Perusahaan',
         'owner_phone_number'        => 'Nomor HP Pemilik Perusahaan',
         'owner_ward_id'             => 'Kelurahan Pemilik Perusahaan',
+        'user'                      => 'Pengguna',
         'username'                  => 'Nama Pengguna',
     ],
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Masters\{
     DepartmentController,
     DepartmentGroupController,
     DistrictController,
+    LetterClassificationController,
     LetterOriginController,
     LetterStatusController,
     LetterTypeController,
@@ -21,6 +22,7 @@ use App\Http\Controllers\Masters\{
     WardController,
 };
 use App\Http\Controllers\Settings\{
+    AccountController,
     FileController,
     LoginController,
     ProviderController,
@@ -61,6 +63,7 @@ Route::middleware('authcheck')->group(function() {
     Route::resource('/master/departemen', DepartmentController::class);
     Route::resource('/master/kecamatan', DistrictController::class);
     Route::resource('/master/kelompok-departemen', DepartmentGroupController::class);
+    Route::resource('/master/klasifikasi-surat', LetterClassificationController::class);
     Route::resource('/master/asal-surat', LetterOriginController::class);
     Route::resource('/master/status-surat', LetterStatusController::class);
     Route::resource('/master/jenis-surat', LetterTypeController::class);
@@ -74,6 +77,7 @@ Route::middleware('authcheck')->group(function() {
     Route::resource('/master/kelurahan', WardController::class);
 
     // Route untuk Setting
+    Route::resource('/pengaturan/akun-login', AccountController::class);
     Route::resource('/pengaturan/pengguna', UserController::class);
     Route::resource('/pengaturan/provider', ProviderController::class);
 

@@ -10,11 +10,15 @@ class CreateStgMenuAccess extends Migration
     {
         Schema::create('stg_menu_access', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('group_menu_id'); // Join ke Tabel stg_group_menu
+            $table->unsignedInteger('login_id'); // Join ke Tabel stg_login
+            $table->unsignedInteger('menu_id')->nullable(); // Join ke Tabel stg_menu
+            $table->unsignedInteger('submenu_id')->nullable(); // Join ke Tabel stg_submenu
+            // $table->unsignedInteger('group_menu_id'); // Join ke Tabel stg_group_menu
             $table->boolean('add')->default(0);
             $table->boolean('edit')->default(0);
             $table->boolean('delete')->default(0);
             $table->boolean('detail')->default(0);
+            $table->boolean('view')->default(0);
             
             // Struktur Baku
             $table->string('access_code')->nullable();

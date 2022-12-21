@@ -22,11 +22,13 @@
                     </ol>
                 </nav>
             </div>
+            @if ($access->add == 1)
             <div class="ms-auto">
                 <div class="btn-group">
                     <a href="{{ $menu->url }}/create" class="btn btn-primary">Tambah</a>
                 </div>
             </div>
+            @endif
         </div>
         <!--end breadcrumb-->
         <h6 class="mb-0 text-uppercase">Daftar {{ $menu->title }}</h6>
@@ -73,12 +75,19 @@
                                                 <td>{{ $item->phone_no_1 }}/@if($item->phone_no_2) {{ $item->phone_no_2 }} @else - @endif/@if($item->phone_no_2) {{ $item->phone_no_2 }} @else - @endif</td>
                                                 <td>{{ $item->email }}</td>
                                                 <td class="text-center" style="width: 5%">
-                                                    <a href="{{ $menu->url }}/{{ $item->id }}"><i class="bx bx-edit"></i></a>
+                                                    @if ($access->edit == 1)
+                                                        <a href="{{ $menu->url }}/{{ $item->id }}/edit"><i class="bx bx-edit"></i></a>
+                                                    @endif
+                                                    @if ($access->delete == 1)
                                                     <form action="{{ $menu->url }}/{{ $item->id }}" method="POST" class="d-inline">
                                                         @method('delete')
                                                         @csrf
                                                         <button id="delete" type="submit" class="bx bx-trash text-danger sa-warning" style="border: 0px; background: 0%"></button>
                                                     </form>
+                                                    @endif
+                                                    @if ($access->detail == 1)
+                                                        <a href="{{ $menu->url }}/{{ $item->id }}"><i class="lni lni-eye"></i></a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

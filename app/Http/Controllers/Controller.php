@@ -25,6 +25,7 @@ use App\Models\Masters\{
 use App\Models\Settings\{
     Login,
     Menu,
+    MenuAccess,
     Provider,
     SubMenu,
     User,
@@ -50,6 +51,7 @@ class Controller extends BaseController
         // Global Variabel untuk Setting
         $this->login = new Login();
         $this->menu = new Menu();
+        $this->menu_access = new MenuAccess();
         $this->provider = new Provider();
         $this->submenu = new SubMenu();
         $this->user = new User();

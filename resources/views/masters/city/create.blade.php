@@ -29,8 +29,10 @@
         @enderror
     </div>
     <div class="col-12">
+        @if ($access->add == 1)
         <div class="d-grid">
             <button type="submit" class="btn btn-success">SIMPAN</button>
         </div>
+        @endif
     </div>
 </form>

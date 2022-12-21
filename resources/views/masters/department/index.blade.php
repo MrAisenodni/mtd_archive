@@ -22,11 +22,13 @@
                     </ol>
                 </nav>
             </div>
+            @if ($access->add == 1)
             <div class="ms-auto">
                 <div class="btn-group">
                     <a href="{{ $menu->url }}/create" class="btn btn-primary">Tambah</a>
                 </div>
             </div>
+            @endif
         </div>
         <!--end breadcrumb-->
         <h6 class="mb-0 text-uppercase">Daftar {{ $menu->title }}</h6>
@@ -57,7 +59,6 @@
                                         <th>Kode</th>
                                         <th>{{ $menu->title }}</th>
                                         <th>Kelompok {{ $menu->title }}</th>
-                                        <th>RD</th>
                                         <th>Manager</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -70,15 +71,21 @@
                                                 <td>{{ $item->code }}</td>
                                                 <td>{{ $item->name }}</td>
                                                 <td>@if ($item->department_group) {{ $item->department_group->name }} @endif</td>
-                                                <td>@if ($item->doc_ref == 1) Y @else N @endif</td>
-                                                <td>@if ($item->manager) {{ $item->manager->name }} @endif</td>
+                                                <td>@if ($item->manager) {{ $item->manager->full_name }} @endif</td>
                                                 <td class="text-center" style="width: 5%">
-                                                    <a href="{{ $menu->url }}/{{ $item->id }}"><i class="bx bx-edit"></i></a>
+                                                    @if ($access->edit == 1)
+                                                        <a href="{{ $menu->url }}/{{ $item->id }}/edit"><i class="bx bx-edit"></i></a>
+                                                    @endif
+                                                    @if ($access->delete == 1)
                                                     <form action="{{ $menu->url }}/{{ $item->id }}" method="POST" class="d-inline">
                                                         @method('delete')
                                                         @csrf
                                                         <button id="delete" type="submit" class="bx bx-trash text-danger sa-warning" style="border: 0px; background: 0%"></button>
                                                     </form>
+                                                    @endif
+                                                    @if ($access->detail == 1)
+                                                        <a href="{{ $menu->url }}/{{ $item->id }}"><i class="lni lni-eye"></i></a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

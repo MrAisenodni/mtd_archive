@@ -18,10 +18,11 @@ class DatabaseSeeder extends Seeder
             Settings\MenuSeeder::class,
             Settings\SubMenuSeeder::class,
             Settings\ProviderSeeder::class,
-  
+            
             // For User Login
             Settings\UserSeeder::class,
             Settings\LoginSeeder::class,
+            Settings\MenuAccessSeeder::class,
 
             // For Validation Parameter
             Settings\AttributesSeeder::class,

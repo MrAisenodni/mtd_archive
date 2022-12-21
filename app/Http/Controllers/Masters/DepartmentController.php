@@ -13,8 +13,11 @@ class DepartmentController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'data'          => $this->department->select('id', 'code', 'name', 'group_id', 'doc_ref', 'user_id')->where('disabled', 0)->get(),
+            'data'          => $this->department->select('id', 'code', 'name', 'group_id', 'user_id')->where('disabled', 0)->get(),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0) abort(403);
 
         return view('masters.department.index', $data);
     }
@@ -26,6 +29,9 @@ class DepartmentController extends Controller
             'groups'        => $this->department_group->select('id','name')->where('disabled', 0)->get(),
             'managers'      => $this->user->select('id','full_name')->where('disabled', 0)->get(),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0) abort(403);
 
         return view('masters.department.create', $data);
     }
@@ -62,6 +68,9 @@ class DepartmentController extends Controller
             'managers'      => $this->user->select('id','full_name')->where('disabled', 0)->get(),
             'detail'        => $this->department->select('id', 'code', 'name', 'group_id', 'doc_ref', 'user_id')->where('id', $id)->where('disabled', 0)->first(),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0 || $data['access']->detail == 0) abort(403);
         
         return view('masters.department.edit', $data);
     }

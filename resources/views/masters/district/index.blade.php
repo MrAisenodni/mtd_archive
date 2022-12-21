@@ -67,12 +67,19 @@
                                                 <td>{{ $item->code }}</td>
                                                 <td>{{ $item->name }}</td>
                                                 <td class="text-center" style="width: 5%">
-                                                    <a href="{{ $menu->url }}/{{ $item->id }}"><i class="bx bx-edit"></i></a>
+                                                    @if ($access->edit == 1)
+                                                        <a href="{{ $menu->url }}/{{ $item->id }}/edit"><i class="bx bx-edit"></i></a>
+                                                    @endif
+                                                    @if ($access->delete == 1)
                                                     <form action="{{ $menu->url }}/{{ $item->id }}" method="POST" class="d-inline">
                                                         @method('delete')
                                                         @csrf
                                                         <button id="delete" type="submit" class="bx bx-trash text-danger sa-warning" style="border: 0px; background: 0%"></button>
                                                     </form>
+                                                    @endif
+                                                    @if ($access->detail == 1)
+                                                        <a href="{{ $menu->url }}/{{ $item->id }}"><i class="lni lni-eye"></i></a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -88,8 +95,10 @@
                     <div class="card-body">
                         @if (request()->path() == substr($menu->url, 1))
                             @include('masters.district.create')
-                        @else
+                        @elseif (substr(request()->path(), -4) == 'edit')
                             @include('masters.district.edit')
+                        @else
+                            @include('masters.district.show')
                         @endif
                     </div>
                 </div>

@@ -8,13 +8,16 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     protected $path = '/pengaturan/pengguna';
-
+    
     public function index()
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
             'data'          => $this->user->select('id', 'nik', 'full_name', 'gender', 'birth_place', 'birth_date', 'email', 'phone_number', 'home_number', 'address', 'join_date', 'religion_id', 'position_id', 'access_code')->where('disabled', 0)->get(),
         ];
+        $access = $this->menu_access->select('view')->where('disabled', 0)->where('submenu_id', $data['menu']->id)->where('login_id', session()->get('sid'))->first();
+        if (!$access) abort(403);
+        if ($access->view == 0) abort(403);
 
         return view('settings.user.index', $data);
     }
@@ -26,6 +29,9 @@ class UserController extends Controller
             'religions'     => $this->religion->select('id','name')->where('disabled', 0)->get(),
             'positions'     => $this->position->select('id','name')->where('disabled', 0)->get(),
         ];
+        $access = $this->menu_access->select('add')->where('disabled', 0)->where('submenu_id', $data['menu']->id)->where('login_id', session()->get('sid'))->first();
+        if (!$access) abort(403);
+        if ($access->add == 0) abort(403);
 
         return view('settings.user.create', $data);
     }
@@ -89,7 +95,7 @@ class UserController extends Controller
             return redirect($this->path)->with('status', 'Data Berhasil Dihapus.');
         } else {
             $validate = $request->validate([
-                'nik'           => 'required|unique:mst_user,nik,'.$id.',id,disabled,1',
+                'nik'           => 'required|unique:mst_user,nik,'.$id.',id,disabled,0',
                 'full_name'     => 'required',
             ]);
     

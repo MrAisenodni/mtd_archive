@@ -15,6 +15,9 @@ class CompanyController extends Controller
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
             'data'          => $this->company->select('id', 'code', 'name', 'address_1', 'address_2', 'address_3', 'phone_no_1', 'phone_no_2', 'email')->where('disabled', 0)->paginate(10),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0) abort(403);
 
         return view('masters.company.index', $data);
     }
@@ -26,6 +29,9 @@ class CompanyController extends Controller
             'wards'         => $this->ward->select('id', 'name', 'district_id')->where('disabled', 0)->get(),
             // 'provinces'     => $this->province->select('id', 'name', 'country_id')->where('disabled', 0)->get(),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->add == 0) abort(403);
 
         return view('masters.company.create', $data);
     }
@@ -67,10 +73,28 @@ class CompanyController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'detail'        => $this->company->select('id', 'code', 'name', 'address_1', 'address_2', 'address_3', 'address_2', 'address_3', 'phone_no_1', 'phone_no_2', 'email')->where('id', $id)->where('disabled', 0)->first(),
+            'detail'        => $this->company->select('id', 'code', 'name', 'address_1', 'address_2', 'address_3', 'address_2', 'address_3', 'phone_no_1', 'phone_no_2', 'email', 'ward_id')->where('id', $id)->where('disabled', 0)->first(),
             'wards'         => $this->ward->select('id', 'name', 'district_id')->where('disabled', 0)->get(),
             // 'provinces'     => $this->province->select('id', 'name', 'country_id')->where('disabled', 0)->get(),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->detail == 0) abort(403);
+        
+        return view('masters.company.show', $data);
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
+            'detail'        => $this->company->select('id', 'code', 'name', 'address_1', 'address_2', 'address_3', 'address_2', 'address_3', 'phone_no_1', 'phone_no_2', 'email', 'ward_id')->where('id', $id)->where('disabled', 0)->first(),
+            'wards'         => $this->ward->select('id', 'name', 'district_id')->where('disabled', 0)->get(),
+            // 'provinces'     => $this->province->select('id', 'name', 'country_id')->where('disabled', 0)->get(),
+        ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->edit == 0) abort(403);
         
         return view('masters.company.edit', $data);
     }

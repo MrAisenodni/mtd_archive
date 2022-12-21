@@ -14,6 +14,7 @@ Jabatan;/master/jabatan;bi bi-arrow-right-short;3
 Departemen;/master/departemen;bi bi-arrow-right-short;3
 Kelompok Departemen;/master/kelompok-departemen;bi bi-arrow-right-short;3
 Perusahaan;/master/perusahaan;bi bi-arrow-right-short;3
+Klasifikasi Surat;/master/klasifikasi-surat;bi bi-arrow-right-short;3
 Asal Surat;/master/asal-surat;bi bi-arrow-right-short;3
 Agama;/master/agama;bi bi-arrow-right-short;3
 Kelurahan/Desa;/master/kelurahan;bi bi-arrow-right-short;3
@@ -23,6 +24,7 @@ Provinsi;/master/provinsi;bi bi-arrow-right-short;3
 Negara;/master/negara;bi bi-arrow-right-short;3
 Provider;/pengaturan/provider;bi bi-building;4
 Pengguna;/pengaturan/pengguna;bx bx-user;4
+Akun;/pengaturan/akun-login;bx bx-lock;4
 Bahasa;/pengaturan/bahasa;lni lni-library;4
 FAQ;/pengaturan/faq;bi bi-exclamation-triangle;4
 Dokumentasi;/pengaturan/dokumentasi;bi bi-file-earmark-code;4

@@ -15,6 +15,9 @@ class LetterStatusController extends Controller
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
             'data'          => $this->letter_status->select('id', 'name', 'back_color', 'fore_color', 'main_status')->where('disabled', 0)->get(),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0) abort(403);
 
         return view('masters.letter_status.index', $data);
     }
@@ -50,6 +53,23 @@ class LetterStatusController extends Controller
             'detail'        => $this->letter_status->select('id', 'name', 'back_color', 'fore_color', 'main_status')->where('id', $id)->where('disabled', 0)->first(),
             'data'          => $this->letter_status->select('id', 'name', 'back_color', 'fore_color', 'main_status')->where('disabled', 0)->get(),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0 || $data['access']->detail == 0) abort(403);
+        
+        return view('masters.letter_status.index', $data);
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
+            'detail'        => $this->letter_status->select('id', 'name', 'back_color', 'fore_color', 'main_status')->where('id', $id)->where('disabled', 0)->first(),
+            'data'          => $this->letter_status->select('id', 'name', 'back_color', 'fore_color', 'main_status')->where('disabled', 0)->get(),
+        ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0 || $data['access']->edit == 0) abort(403);
         
         return view('masters.letter_status.index', $data);
     }

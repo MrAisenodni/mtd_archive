@@ -15,6 +15,9 @@ class DepartmentGroupController extends Controller
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
             'data'          => $this->department_group->select('id', 'code', 'name')->where('disabled', 0)->get(),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0) abort(403);
 
         return view('masters.department_group.index', $data);
     }
@@ -47,6 +50,23 @@ class DepartmentGroupController extends Controller
             'detail'        => $this->department_group->select('id', 'code', 'name')->where('id', $id)->where('disabled', 0)->first(),
             'data'          => $this->department_group->select('id', 'code', 'name')->where('disabled', 0)->get(),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0 || $data['access']->detail == 0) abort(403);
+        
+        return view('masters.department_group.index', $data);
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
+            'detail'        => $this->department_group->select('id', 'code', 'name')->where('id', $id)->where('disabled', 0)->first(),
+            'data'          => $this->department_group->select('id', 'code', 'name')->where('disabled', 0)->get(),
+        ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0 || $data['access']->edit == 0) abort(403);
         
         return view('masters.department_group.index', $data);
     }

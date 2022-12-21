@@ -16,6 +16,9 @@ class DistrictController extends Controller
             'data'          => $this->district->select('id', 'code', 'name', 'city_id')->where('disabled', 0)->get(),
             'cities'     => $this->city->select('id', 'code', 'name')->where('disabled', 0)->get(),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0) abort(403);
 
         return view('masters.district.index', $data);
     }
@@ -51,6 +54,24 @@ class DistrictController extends Controller
             'data'          => $this->district->select('id', 'code', 'name', 'city_id')->where('disabled', 0)->get(),
             'cities'     => $this->city->select('id', 'code', 'name')->where('disabled', 0)->get(),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0 || $data['access']->detail == 0) abort(403);
+        
+        return view('masters.district.index', $data);
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
+            'detail'        => $this->district->select('id', 'code', 'name', 'city_id')->where('id', $id)->where('disabled', 0)->first(),
+            'data'          => $this->district->select('id', 'code', 'name', 'city_id')->where('disabled', 0)->get(),
+            'cities'     => $this->city->select('id', 'code', 'name')->where('disabled', 0)->get(),
+        ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0 || $data['access']->edit == 0) abort(403);
         
         return view('masters.district.index', $data);
     }
@@ -62,13 +83,13 @@ class DistrictController extends Controller
         $validate = $request->validate([
             'code'              => 'required|unique:mst_district,code,'.$id.',id,disabled,1',
             'name'              => 'required',
-            'city'           => 'required',
+            'city'              => 'required',
         ]);
 
         $data = [
             'code'          => $input['code'],
             'name'          => $input['name'],
-            'city_id'    => $input['city'],
+            'city_id'       => $input['city'],
             'updated_at'    => now(),
             'updated_by'    => session()->get('user_id'),
         ];
