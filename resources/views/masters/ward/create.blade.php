@@ -1,20 +1,6 @@
 <form class="row g-3" action="{{ $menu->url }}" method="POST">
     @csrf
     <div class="col-12">
-        <label class="form-label" for="district">Kecamatan</label>
-        <select class="single-select form-control @error('district') is-invalid @enderror" id="district" name="district" @if ($access->add == 0) disabled @endif>
-            <option value="">--- SILAHKAN PILIH ---</option>
-            @if ($districts)
-                @foreach ($districts as $item)
-                    <option value="{{ $item->id }}" @if(old('district') == $item->id) selected @endif>{{ $item->name }}</option>
-                @endforeach
-            @endif
-        </select>
-        @error('district')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="col-12">
         <label class="form-label" for="code">Kode {{ $menu->title }}</label>
         <input type="text" class="form-control @error('code') is-invalid @enderror" id="code" name="code" value="{{ old('code') }}" @if ($access->add == 0) disabled @endif>
         @error('code')

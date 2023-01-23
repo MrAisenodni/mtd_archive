@@ -2,15 +2,8 @@
     @method('PUT')
     @csrf
     <div class="col-12">
-        <label class="form-label" for="district">Kecamatan</label>
-        <input type="text" class="form-control @error('district') is-invalid @enderror" id="district" name="district" value="{{ old('district', $detail->district->name) }}" disabled>
-        @error('district')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="col-12">
         <label class="form-label" for="code">Kode {{ $menu->title }}</label>
-        <input type="text" class="form-control @error('code') is-invalid @enderror" id="code" name="code" value="{{ old('code', $detail->code) }}" disabled>
+        <input type="text" class="form-control @error('code') is-invalid @enderror" id="code" name="code" value="{{ old('code', $detail->post_code) }}" disabled>
         @error('code')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror

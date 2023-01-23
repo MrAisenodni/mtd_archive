@@ -34,9 +34,31 @@ class ShelfController extends Controller
             'created_by'    => session()->get('user_id'),
         ];
 
+        /* Validation Form */
+        $check = $this->shelf->where('name', $input['name'])->where('chest_id', $input['chest'])->where('disabled', 0)->first();
+        if ($check) return redirect(url()->previous())->with('error', 'Rak sudah terdaftar pada Lemari yang sama.')->withInput();
+
+        /* Testing with Validation Parameter */
+        // $validation = $this->validation_parameter->where('menu_id', $menu->id)->get();
+        // $validation_count = $this->validation_parameter->where('menu_id', $menu->id)->count();
+
+        // $expression = $validation[0]->expression;
+
+        // $check = $this->shelf->whereRaw($expression)->first();
+        // dd($check);
+        // for ($i=0; $i++; $i<$validation_count) 
+        // {
+        //     if ($validation[$i]->type == 'expression')
+        //     {
+        //         $check = $this->shelf->whereRaw($validation->expression)->first();
+        //         dd($check);
+        //         if ($check) return redirect(url()->previous())->with('error', $validation->message)->withInput();
+        //     }
+        // }
+
         $this->shelf->insert($data);
 
-        return redirect(url()->previous())->with('location', 'Data Berhasil Ditambahkan.');
+        return redirect(url()->previous())->with('status', 'Data Berhasil Ditambahkan.');
     }
 
     public function show($id)
@@ -79,10 +101,14 @@ class ShelfController extends Controller
             'updated_at'    => now(),
             'updated_by'    => session()->get('user_id'),
         ];
+        
+        /* Validation Form */
+        $check = $this->shelf->where('name', $input['name'])->where('chest_id', $input['chest'])->where('disabled', 0)->where('id', $id)->first();
+        if ($check) return redirect(url()->previous())->with('error', 'Rak sudah terdaftar pada Lemari yang sama.')->withInput();
 
         $this->shelf->where('id', $id)->update($data);
 
-        return redirect(url()->previous())->with('location', 'Data Berhasil Diubah.');
+        return redirect(url()->previous())->with('status', 'Data Berhasil Diubah.');
     }
 
     public function destroy($id)
@@ -95,6 +121,6 @@ class ShelfController extends Controller
 
         $this->shelf->where('id', $id)->update($data);
 
-        return redirect($this->path)->with('location', 'Data Berhasil Dihapus.');
+        return redirect($this->path)->with('status', 'Data Berhasil Dihapus.');
     }
 }

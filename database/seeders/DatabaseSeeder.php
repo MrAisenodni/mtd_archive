@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             Masters\CompanySeeder::class,
             Masters\DepartmentSeeder::class,
             Masters\DepartmentGroupSeeder::class,
+            Masters\LetterClassificationSeeder::class,
             Masters\LetterOriginSeeder::class,
             Masters\LetterStatusSeeder::class,
             Masters\LetterTypeSeeder::class,

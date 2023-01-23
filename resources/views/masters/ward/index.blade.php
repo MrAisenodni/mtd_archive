@@ -64,7 +64,7 @@
                                         @foreach ($data as $item)
                                             <tr data-id="{{ $item->id }}">
                                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                                <td>{{ $item->code }}</td>
+                                                <td>{{ $item->post_code }}</td>
                                                 <td>{{ $item->name }}</td>
                                                 <td class="text-center" style="width: 5%">
                                                     @if ($access->edit == 1)
@@ -94,11 +94,11 @@
                 <div class="card">
                     <div class="card-body">
                         @if (request()->path() == substr($menu->url, 1))
-                            @include('masters.chest.create')
+                            @include('masters.ward.create')
                         @elseif (substr(request()->path(), -4) == 'edit')
-                            @include('masters.chest.edit')
+                            @include('masters.ward.edit')
                         @else
-                            @include('masters.chest.show')
+                            @include('masters.ward.show')
                         @endif
                     </div>
                 </div>

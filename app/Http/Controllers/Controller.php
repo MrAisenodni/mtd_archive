@@ -10,6 +10,7 @@ use App\Models\Masters\{
     District,
     Department,
     DepartmentGroup,
+    LetterClassification,
     LetterOrigin,
     LetterStatus,
     LetterType,
@@ -29,6 +30,7 @@ use App\Models\Settings\{
     Provider,
     SubMenu,
     User,
+    ValidationParameter,
 };
 use App\Models\Transactions\{
     DeletedMail,
@@ -55,6 +57,7 @@ class Controller extends BaseController
         $this->provider = new Provider();
         $this->submenu = new SubMenu();
         $this->user = new User();
+        $this->validation_parameter = new ValidationParameter();
 
         // Global Variabel untuk Master
         $this->chest = new Chest();
@@ -64,6 +67,7 @@ class Controller extends BaseController
         $this->department = new Department();
         $this->department_group = new DepartmentGroup();
         $this->district = new District();
+        $this->letter_classification = new LetterClassification();
         $this->letter_origin = new LetterOrigin();
         $this->letter_status = new LetterStatus();
         $this->letter_type = new LetterType();

@@ -2,14 +2,14 @@
     @csrf
     <div class="col-12">
         <label class="form-label" for="code">Kode {{ $menu->title }}</label>
-        <input type="text" class="form-control @error('code') is-invalid @enderror" id="code" name="code" value="{{ old('code') }}" disabled>
+        <input type="text" class="form-control @error('code') is-invalid @enderror" id="code" name="code" value="{{ old('code') }}">
         @error('code')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
     <div class="col-12">
         <label class="form-label" for="name">{{ $menu->title }}</label>
-        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" disabled>
+        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
         @error('name')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror

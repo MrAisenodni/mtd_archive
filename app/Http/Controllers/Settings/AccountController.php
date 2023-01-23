@@ -16,6 +16,9 @@ class AccountController extends Controller
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
             'data'          => $this->login->select('id', 'username', 'user_id')->where('disabled', 0)->get(),
         ];
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0) abort(403);
 
         return view('settings.login.index', $data);
     }
@@ -26,6 +29,9 @@ class AccountController extends Controller
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
             'users'         => $this->user->select('id', 'nik', 'full_name', 'email', 'position_id')->where('disabled', 0)->get()
         ];
+        $data['access'] = $this->menu_access->select('add')->where('disabled', 0)->where('submenu_id', $data['menu']->id)->where('login_id', session()->get('sid'))->first();
+        if (!$data['access']) abort(403);
+        if ($data['access']->add == 0) abort(403);
 
         return view('settings.login.create', $data);
     }
@@ -65,6 +71,23 @@ class AccountController extends Controller
             'detail'        => $this->login->select('id', 'username', 'password', 'user_id')->where('id', $id)->where('disabled', 0)->first(),
             'users'         => $this->user->select('id', 'nik', 'full_name', 'email', 'position_id')->where('disabled', 0)->get()
         ];
+        $data['access'] = $this->menu_access->select('detail')->where('disabled', 0)->where('submenu_id', $data['menu']->id)->where('login_id', session()->get('sid'))->first();
+        if (!$data['access']) abort(403);
+        if ($data['access']->detail == 0) abort(403);
+        
+        return view('settings.login.show', $data);
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
+            'detail'        => $this->login->select('id', 'username', 'password', 'user_id')->where('id', $id)->where('disabled', 0)->first(),
+            'users'         => $this->user->select('id', 'nik', 'full_name', 'email', 'position_id')->where('disabled', 0)->get()
+        ];
+        $data['access'] = $this->menu_access->select('edit')->where('disabled', 0)->where('submenu_id', $data['menu']->id)->where('login_id', session()->get('sid'))->first();
+        if (!$data['access']) abort(403);
+        if ($data['access']->edit == 0) abort(403);
         
         return view('settings.login.edit', $data);
     }

@@ -27,7 +27,7 @@ class SaveMethodController extends Controller
         $input = $request->all();
 
         $validate = $request->validate([
-            'name'              => 'required',
+            'name'              => 'required|unique:mst_save_method,name,1,disabled',
         ]);
 
         $data = [
@@ -74,7 +74,7 @@ class SaveMethodController extends Controller
         $input = $request->all();
 
         $validate = $request->validate([
-            'name'              => 'required',
+            'name'              => 'required|unique:mst_save_method,name,'.$id.',id,disabled,1',
         ]);
 
         $data = [

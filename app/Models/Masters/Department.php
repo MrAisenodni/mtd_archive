@@ -2,6 +2,9 @@
 
 namespace App\Models\Masters;
 
+use App\Models\Settings\{
+    User,
+};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

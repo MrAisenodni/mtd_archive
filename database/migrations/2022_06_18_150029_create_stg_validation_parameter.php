@@ -11,9 +11,12 @@ class CreateStgValidationParameter extends Migration
         Schema::create('stg_validation_parameter', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('menu_id')->nullable();
+            // $table->string('table_name');
             $table->string('field_name');
+            $table->enum('type', ['expression', 'fullquery']);
             $table->string('expression')->nullable();
             $table->text('description')->nullable();
+            $table->string('message')->nullable();
             
             // Struktur Baku
             $table->string('access_code')->nullable();

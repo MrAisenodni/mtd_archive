@@ -15,9 +15,9 @@ class UserController extends Controller
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
             'data'          => $this->user->select('id', 'nik', 'full_name', 'gender', 'birth_place', 'birth_date', 'email', 'phone_number', 'home_number', 'address', 'join_date', 'religion_id', 'position_id', 'access_code')->where('disabled', 0)->get(),
         ];
-        $access = $this->menu_access->select('view')->where('disabled', 0)->where('submenu_id', $data['menu']->id)->where('login_id', session()->get('sid'))->first();
-        if (!$access) abort(403);
-        if ($access->view == 0) abort(403);
+        $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
+            ->where('login_id', session()->get('sid'))->where('submenu_id', $data['menu']->id)->first();
+        if ($data['access']->view == 0) abort(403);
 
         return view('settings.user.index', $data);
     }

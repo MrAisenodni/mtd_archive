@@ -13,7 +13,7 @@ class WardController extends Controller
     {
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
-            'data'          => $this->ward->select('id', 'post_code', 'name', 'district_id')->where('disabled', 0)->get(),
+            'data'          => $this->ward->select('id', 'post_code', 'name', 'district_id')->where('disabled', 0)->paginate(5000),
             'districts'     => $this->district->select('id', 'code', 'name')->where('disabled', 0)->get(),
         ];
         $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
@@ -51,7 +51,7 @@ class WardController extends Controller
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
             'detail'        => $this->ward->select('id', 'post_code', 'name', 'district_id')->where('id', $id)->where('disabled', 0)->first(),
-            'data'          => $this->ward->select('id', 'post_code', 'name', 'district_id')->where('disabled', 0)->get(),
+            'data'          => $this->ward->select('id', 'post_code', 'name', 'district_id')->where('disabled', 0)->paginate(5000),
             'districts'     => $this->district->select('id', 'code', 'name')->where('disabled', 0)->get(),
         ];
         $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
@@ -66,7 +66,7 @@ class WardController extends Controller
         $data = [
             'menu'          => $this->submenu->select('id', 'title', 'menu_id', 'url')->where('url', $this->path)->first(),
             'detail'        => $this->ward->select('id', 'post_code', 'name', 'district_id')->where('id', $id)->where('disabled', 0)->first(),
-            'data'          => $this->ward->select('id', 'post_code', 'name', 'district_id')->where('disabled', 0)->get(),
+            'data'          => $this->ward->select('id', 'post_code', 'name', 'district_id')->where('disabled', 0)->paginate(5000),
             'districts'     => $this->district->select('id', 'code', 'name')->where('disabled', 0)->get(),
         ];
         $data['access'] = $this->menu_access->select('view', 'add', 'edit', 'delete', 'detail')->where('disabled', 0)
