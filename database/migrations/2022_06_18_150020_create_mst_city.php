@@ -10,7 +10,7 @@ class CreateMstCity extends Migration
     {
         Schema::create('mst_city', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 10)->unique()->nullable();
+            $table->string('code', 10)->nullable();
             $table->string('name');
             $table->unsignedInteger('province_id');
             

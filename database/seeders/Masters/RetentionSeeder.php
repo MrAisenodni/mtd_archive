@@ -10,7 +10,7 @@ class RetentionSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->file = '/database/csv/Retention.csv';
+        $this->file = '/database/csv/masters/Retention.csv';
         $this->tablename = 'mst_retention';
         $this->defaults = [
             'created_by'    => 'Migrasi'
@@ -21,6 +21,8 @@ class RetentionSeeder extends CsvSeeder
 
     public function run()
     {
+        DB::unprepared('SET IDENTITY_INSERT mst_retention ON');
         parent::run();
+        DB::unprepared('SET IDENTITY_INSERT mst_retention OFF');
     }
 }

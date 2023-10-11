@@ -10,7 +10,7 @@ class LetterTypeSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->file = '/database/csv/LetterType.csv';
+        $this->file = '/database/csv/masters/LetterType.csv';
         $this->tablename = 'mst_letter_type';
         $this->defaults = [
             'created_by'    => 'Migrasi'
@@ -21,6 +21,8 @@ class LetterTypeSeeder extends CsvSeeder
 
     public function run()
     {
+        DB::unprepared('SET IDENTITY_INSERT mst_letter_type ON');
         parent::run();
+        DB::unprepared('SET IDENTITY_INSERT mst_letter_type OFF');
     }
 }

@@ -17,12 +17,6 @@ class DatabaseSeeder extends Seeder
             // For Menu
             Settings\MenuSeeder::class,
             Settings\SubMenuSeeder::class,
-            Settings\ProviderSeeder::class,
-            
-            // For User Login
-            Settings\UserSeeder::class,
-            Settings\LoginSeeder::class,
-            Settings\MenuAccessSeeder::class,
 
             // For Validation Parameter
             Settings\AttributesSeeder::class,
@@ -45,7 +39,15 @@ class DatabaseSeeder extends Seeder
             Masters\ProvinceSeeder::class,
             Masters\CitySeeder::class,
             Masters\DistrictSeeder::class,
-            Masters\WardSeeder::class, // Komentar sementara untuk mempercepat Migrasi
+            // Masters\WardSeeder::class, // Komentar sementara untuk mempercepat Migrasi
+            
+            // For User Login
+            Masters\UserSeeder::class,
+            Settings\LoginSeeder::class,
+            Settings\MenuAccessSeeder::class,
+
+            // For Owner
+            Settings\ProviderSeeder::class,
         ]);
     }
 }

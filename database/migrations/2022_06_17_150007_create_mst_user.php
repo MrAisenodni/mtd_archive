@@ -16,8 +16,8 @@ class CreateMstUser extends Migration
             $table->string('birth_place')->nullable();
             $table->date('birth_date')->nullable();
             $table->string('email')->unique()->nullable();
-            $table->string('phone_number')->unique()->nullable();
-            $table->string('home_number')->unique()->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('home_number')->nullable();
             $table->text('address')->nullable();
             $table->date('join_date')->nullable(); // Tanggal join ke Perusahaan
             $table->unsignedInteger('religion_id')->nullable(); // Join ke Tabel mst_religion

@@ -10,17 +10,18 @@ class ChestSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->file = '/database/csv/Chest.csv';
+        $this->file = '/database/csv/masters/Chest.csv';
         $this->tablename = 'mst_chest';
         $this->defaults = [
             'created_by'    => 'Migrasi'
         ];
         $this->mapping = ['id', 'name'];
-        $this->header = false;
     }
 
     public function run()
     {
+        DB::unprepared('SET IDENTITY_INSERT mst_chest ON');
         parent::run();
+        DB::unprepared('SET IDENTITY_INSERT mst_chest OFF');
     }
 }

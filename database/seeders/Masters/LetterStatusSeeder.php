@@ -10,7 +10,7 @@ class LetterStatusSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->file = '/database/csv/LetterStatus.csv';
+        $this->file = '/database/csv/masters/LetterStatus.csv';
         $this->tablename = 'mst_letter_status';
         $this->defaults = [
             'created_by'    => 'Migrasi'
@@ -21,6 +21,8 @@ class LetterStatusSeeder extends CsvSeeder
 
     public function run()
     {
+        DB::unprepared('SET IDENTITY_INSERT mst_letter_status ON');
         parent::run();
+        DB::unprepared('SET IDENTITY_INSERT mst_letter_status OFF');
     }
 }

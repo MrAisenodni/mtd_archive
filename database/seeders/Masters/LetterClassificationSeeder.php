@@ -10,7 +10,7 @@ class LetterClassificationSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->file = '/database/csv/LetterClassification.csv';
+        $this->file = '/database/csv/masters/LetterClassification.csv';
         $this->tablename = 'mst_letter_classification';
         $this->defaults = [
             'created_by'    => 'Migrasi'
@@ -21,6 +21,8 @@ class LetterClassificationSeeder extends CsvSeeder
 
     public function run()
     {
+        DB::unprepared('SET IDENTITY_INSERT mst_letter_classification ON');
         parent::run();
+        DB::unprepared('SET IDENTITY_INSERT mst_letter_classification OFF');
     }
 }

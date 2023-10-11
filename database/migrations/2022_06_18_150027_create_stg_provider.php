@@ -16,9 +16,9 @@ class CreateStgProvider extends Migration
             $table->string('provider_name', 250);
             $table->string('provider_birth_place', 100)->nullable(); // Tempat Didirikan
             $table->date('provider_birth_date')->nullable(); // Tanggal Didirikan
-            $table->string('provider_email')->unique()->nullable();
-            $table->string('provider_phone_number', 25)->unique()->nullable();
-            $table->string('provider_home_number', 25)->unique()->nullable();
+            $table->string('provider_email')->nullable();
+            $table->string('provider_phone_number', 25)->nullable();
+            $table->string('provider_home_number', 25)->nullable();
             $table->string('provider_address')->nullable();
             $table->unsignedInteger('provider_ward_id')->nullable(); // Join ke Tabel mst_ward (Kelurahan)
             $table->text('provider_logo')->nullable(); // Field untuk Logo Perusahaan (Favicon)

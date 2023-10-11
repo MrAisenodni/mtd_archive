@@ -1,0 +1,18 @@
+id;code;name;group_id
+1;KK001;Pelayanan Umum;1
+2;KK002;Tata Usaha;1
+3;KK003;Customer Service;1
+4;HR001;Kesejahteraan Pegawai;2
+5;HR002;Pendidikan dan Pelatihan;2
+6;HR003;Mutu Pegawai;2
+7;AK001;Akuntansi Pelaporan;3
+8;AK002;Akuntansi Kinerja;3
+9;AK003;Akuntansi Operasional;3
+10;KU001;Manajemen Keuangan;4
+11;KU002;Penagihan;4
+12;LG001;Penerimaan;5
+13;LG002;Monitoring Persediaan;5
+14;TP001;Penyediaan Kendaraan;6
+15;TP002;Pemeliharaan Kendaraan;6
+16;MK001;Digital Marketing;7
+17;MK002;Marketing Operasional;7

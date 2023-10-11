@@ -10,7 +10,7 @@ class ShelfSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->file = '/database/csv/Shelf.csv';
+        $this->file = '/database/csv/masters/Shelf.csv';
         $this->tablename = 'mst_shelf';
         $this->defaults = [
             'created_by'    => 'Migrasi'
@@ -21,6 +21,8 @@ class ShelfSeeder extends CsvSeeder
 
     public function run()
     {
+        DB::unprepared('SET IDENTITY_INSERT mst_shelf ON');
         parent::run();
+        DB::unprepared('SET IDENTITY_INSERT mst_shelf OFF');
     }
 }

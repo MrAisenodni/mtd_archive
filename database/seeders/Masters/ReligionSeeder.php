@@ -10,7 +10,7 @@ class ReligionSeeder extends CsvSeeder
 {
     public function __construct()
     {
-        $this->file = '/database/csv/Religion.csv';
+        $this->file = '/database/csv/masters/Religion.csv';
         $this->tablename = 'mst_religion';
         $this->defaults = [
             'created_by'    => 'Migrasi'
@@ -21,6 +21,8 @@ class ReligionSeeder extends CsvSeeder
 
     public function run()
     {
+        DB::unprepared('SET IDENTITY_INSERT mst_religion ON');
         parent::run();
+        DB::unprepared('SET IDENTITY_INSERT mst_religion OFF');
     }
 }
